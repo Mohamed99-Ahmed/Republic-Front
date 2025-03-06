@@ -1,0 +1,9 @@
+{
+  "/page": "app/page.js",
+  "/wishlist/page": "app/wishlist/page.js",
+  "/cart/page": "app/cart/page.js",
+  "/menu/page": "app/menu/page.js",
+  "/stores/page": "app/stores/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/opinions/page": "app/opinions/page.js"
+}

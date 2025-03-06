@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://D%3A/programmer/projects/Rebublic/republic/src/app/page.tsx"],"sourcesContent":["\"use client\";\nimport Image from \"next/image\";\nimport headerSlider1 from \"../../public/imgs/header1.jpg\";\nimport headerSlider2 from \"../../public/imgs/header2.jpg\";\n// Import Swiper React components\nimport { Swiper, SwiperSlide } from \"swiper/react\";\n// Import Swiper styles\nimport \"swiper/css\";\nexport default function HomeHeader() {\n  return (\n    <header className=\"home \">\n      div.\n    </header>\n  );\n}\n"],"names":[],"mappings":";;;;AAAA;;;AAQe,SAAS;IACtB,qBACE,6LAAC;QAAO,WAAU;kBAAQ;;;;;;AAI9B;KANwB"}},
+    {"offset": {"line": 30, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}

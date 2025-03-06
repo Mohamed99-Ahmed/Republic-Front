@@ -1,0 +1,9 @@
+{
+  "version": 3,
+  "sources": [],
+  "sections": [
+    {"offset": {"line": 7, "column": 0}, "map": {"version":3,"sources":["file://D%3A/programmer/projects/Rebublic/republic/src/app/page.tsx"],"sourcesContent":["import Image from \"next/image\";\nimport headerSlider1 from \"../public/image1.jpg\";\nimport headerSlider2 from \"../public/image2.jpg\";\n\nexport default function HomeHeader() {\n  return (\n    <header className=\"home min-h-screen overflow-hidden\">\n      <div className=\"slider flex w-[200%] animate-slide\">\n        <Image\n          alt=\"first Image slider\"\n          className=\"object-cover w-1/2 shrink-0 h-screen\"\n          src={headerSlider1}\n        />\n        <Image\n          alt=\"second Image slider\"\n          className=\"object-cover w-1/2 shrink-0 h-screen\"\n          src={headerSlider2}\n        />\n      </div>\n    </header>\n  );\n}\n"],"names":[],"mappings":";;;;AAAA;;;;;;;;;;;;;;;AAIe,SAAS;IACtB,qBACE,8OAAC;QAAO,WAAU;kBAChB,cAAA,8OAAC;YAAI,WAAU;;8BACb,8OAAC,6HAAA,CAAA,UAAK;oBACJ,KAAI;oBACJ,WAAU;oBACV,KAAK;;;;;;8BAEP,8OAAC,6HAAA,CAAA,UAAK;oBACJ,KAAI;oBACJ,WAAU;oBACV,KAAK;;;;;;;;;;;;;;;;;AAKf"}},
+    {"offset": {"line": 62, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}},
+    {"offset": {"line": 73, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":""}},
+    {"offset": {"line": 73, "column": 0}, "map": {"version":3,"sources":[],"names":[],"mappings":"A"}}]
+}
