@@ -338,7 +338,7 @@ function CategoryMeal({ category }) {
                     className: "whitespace-nowrap"
                 }, void 0, false, {
                     fileName: "[project]/src/components/CategoryMeal/CategoryMeal.tsx",
-                    lineNumber: 13,
+                    lineNumber: 12,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -348,19 +348,19 @@ function CategoryMeal({ category }) {
                             product: product
                         }, product.id, false, {
                             fileName: "[project]/src/components/CategoryMeal/CategoryMeal.tsx",
-                            lineNumber: 16,
+                            lineNumber: 18,
                             columnNumber: 20
                         }, this);
                     })
                 }, void 0, false, {
                     fileName: "[project]/src/components/CategoryMeal/CategoryMeal.tsx",
-                    lineNumber: 14,
+                    lineNumber: 16,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/CategoryMeal/CategoryMeal.tsx",
-            lineNumber: 12,
+            lineNumber: 11,
             columnNumber: 7
         }, this)
     }, void 0, false);
@@ -477,7 +477,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib
 ;
 ;
 // import burgerVid from "../../../public/vidios/burgerVid.mp4";
-const videoUrl = '/vidios/burgerVid.mp4';
+const videoUrl = "/vidios/burgerVid.mp4";
 async function Meals() {
     async function getAllCategories() {
         try {
@@ -501,8 +501,8 @@ async function Meals() {
                     category: category
                 }, category.id, false, {
                     fileName: "[project]/src/components/Meals/Meals.tsx",
-                    lineNumber: 29,
-                    columnNumber: 13
+                    lineNumber: 27,
+                    columnNumber: 16
                 }, this);
             }),
             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -514,18 +514,18 @@ async function Meals() {
                     muted: true
                 }, void 0, false, {
                     fileName: "[project]/src/components/Meals/Meals.tsx",
-                    lineNumber: 34,
-                    columnNumber: 7
+                    lineNumber: 31,
+                    columnNumber: 9
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Meals/Meals.tsx",
-                lineNumber: 33,
-                columnNumber: 6
+                lineNumber: 30,
+                columnNumber: 7
             }, this)
         ]
     }, void 0, true, {
         fileName: "[project]/src/components/Meals/Meals.tsx",
-        lineNumber: 26,
+        lineNumber: 25,
         columnNumber: 5
     }, this);
 }

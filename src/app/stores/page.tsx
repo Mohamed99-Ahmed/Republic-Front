@@ -1,6 +1,6 @@
 import React from "react";
 
-import type { storesType } from "../../../types/store.type";
+import type { storesType } from "../../types/store.type";
 import Location from "@/components/Location/location";
 import axios from "axios";
 
@@ -57,20 +57,20 @@ import axios from "axios";
 //   },
 // ];
 export default async function Stores() {
-  async function getAllStores(){
-    try{
+  async function getAllStores() {
+    try {
       const options = {
         url: "https://backend-three-nu-89.vercel.app/stores",
-        method: "GET"
+        method: "GET",
       };
-      const {data} = await axios.request(options)
-      console.log(data.data.stores)
-      return data.data.stores
-    }catch(err){
+      const { data } = await axios.request(options);
+      console.log(data.data.stores);
+      return data.data.stores;
+    } catch (err) {
       console.log(err);
     }
   }
-  const stores:storesType = await getAllStores();
+  const stores: storesType = await getAllStores();
   return (
     <section className="stores ">
       <div className="container grid gird-cols-1 md:grid-cols-2  gap-4">

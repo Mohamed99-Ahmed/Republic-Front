@@ -1,12 +1,13 @@
 import React, { ReactNode } from 'react'
-import CategoryContext from '../../../context/category.context'
+import AuthContext from '../AuthContext/AuthContext'
+
 
 export default function ParentContext({children}:{children:ReactNode}) {
   return (
     <>
-       <CategoryContext>
-            {children}
-       </CategoryContext>
+          <AuthContext>
+                {children}
+            </AuthContext>
     </>
   )
 }
