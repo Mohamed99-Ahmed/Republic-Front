@@ -4,6 +4,7 @@ import "./globals.css";
 import { Toaster } from "react-hot-toast";
 import NavBar from "@/components/NavBar/NavBar";
 import Footer from "@/components/Footer/Footer";
+import ParentContext from "@/context/ParentContext/ParentContext";
 
 const rubik = Rubik({
   subsets: ['latin'],
@@ -29,7 +30,7 @@ export default function RootLayout({
       <body
         className={rubik.className}
       >
-        {/* <ParentContext> */}
+        <ParentContext>
             <Toaster position="top-right" />
         {/* Redux provider for all aplication */}
       
@@ -47,7 +48,7 @@ export default function RootLayout({
             {/* Footer component */}
             <Footer />
           </div>
-          {/* </ParentContext> */}
+          </ParentContext>
       </body>
     </html>
   );

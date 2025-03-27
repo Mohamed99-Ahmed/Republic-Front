@@ -12,8 +12,8 @@
     "static/chunks/node_modules_react-icons_ci_index_mjs_e4544c._.js",
     "static/chunks/node_modules_react-icons_hi2_index_mjs_d1d125._.js",
     "static/chunks/node_modules_react-icons_lib_74ccc9._.js",
-    "static/chunks/node_modules_bb8747._.js",
-    "static/chunks/[root of the server]__28ef21._.js"
+    "static/chunks/node_modules_239b96._.js",
+    "static/chunks/[root of the server]__dacf21._.js"
   ],
   "source": "dynamic"
 });

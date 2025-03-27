@@ -161,15 +161,16 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 ;
-function Button({ text, className, ariaLabel, onClick }) {
+function Button({ type, text, className, ariaLabel, onClick }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
         className: `capitalize  text-xl text-slate-200 px-2 py-2 rounded-full bg-sColor text-center ${className}`,
         "aria-label": ariaLabel,
         onClick: onClick,
+        type: type,
         children: text
     }, void 0, false, {
         fileName: "[project]/src/components/Button/Button.tsx",
-        lineNumber: 10,
+        lineNumber: 11,
         columnNumber: 5
     }, this);
 }
@@ -220,31 +221,31 @@ function ProductItem({ product }) {
                     height: 300
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 19,
-                    columnNumber: 29
+                    lineNumber: 20,
+                    columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "w-full h-[300px] rounded-md object-contain flex items-center justify-center",
                     children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$bi$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["BiDish"], {
                         className: "font-bold text-gray-600 text-[100px]"
                     }, void 0, false, {
                         fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                        lineNumber: 26,
+                        lineNumber: 29,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 25,
-                    columnNumber: 13
+                    lineNumber: 28,
+                    columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
                     className: "text-xl font-[500] text-center capitalize",
                     children: product.name
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 28,
+                    lineNumber: 32,
                     columnNumber: 9
                 }, this),
-                typeof product.price === 'object' ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
+                typeof product.price === "object" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     dir: "ltr",
                     className: "space-y-2",
                     children: [
@@ -256,8 +257,8 @@ function ProductItem({ product }) {
                                     children: "single : "
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 33,
-                                    columnNumber: 17
+                                    lineNumber: 38,
+                                    columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "price text-sColor font-bold ",
@@ -267,14 +268,14 @@ function ProductItem({ product }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 34,
-                                    columnNumber: 17
+                                    lineNumber: 39,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 32,
-                            columnNumber: 15
+                            lineNumber: 37,
+                            columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                             className: "flex justify-between gap-4",
@@ -284,8 +285,8 @@ function ProductItem({ product }) {
                                     children: "double : "
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 37,
-                                    columnNumber: 17
+                                    lineNumber: 44,
+                                    columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
                                     className: "price text-sColor font-bold ",
@@ -295,20 +296,20 @@ function ProductItem({ product }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 38,
-                                    columnNumber: 17
+                                    lineNumber: 45,
+                                    columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 36,
-                            columnNumber: 15
+                            lineNumber: 43,
+                            columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 31,
-                    columnNumber: 13
+                    lineNumber: 36,
+                    columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "price text-sColor font-bold ",
                     children: [
@@ -317,17 +318,17 @@ function ProductItem({ product }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 42,
+                    lineNumber: 51,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Button$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
-                    text: addToCart ? 'تم اضافتة الي العربة' : 'اضافة الي العربة',
+                    text: addToCart ? "تم اضافتة الي العربة" : "اضافة الي العربة",
                     ariaLabel: "اضافة الي العربة",
-                    className: ` w-full cursor-pointer ${addToCart && 'bg-gray-600'}`,
+                    className: ` w-full cursor-pointer ${addToCart && "bg-gray-600"}`,
                     onClick: ()=>setAddToCart(!addToCart)
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 45,
+                    lineNumber: 54,
                     columnNumber: 9
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -337,7 +338,7 @@ function ProductItem({ product }) {
                             className: "text-3xl text-gray-700 font-bold cursor-pointer"
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 52,
+                            lineNumber: 61,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaHeart"], {
@@ -345,13 +346,13 @@ function ProductItem({ product }) {
                             onClick: ()=>setAddToWishList(!addToWishList)
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 53,
+                            lineNumber: 62,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 51,
+                    lineNumber: 60,
                     columnNumber: 9
                 }, this)
             ]

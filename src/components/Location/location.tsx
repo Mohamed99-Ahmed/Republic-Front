@@ -1,6 +1,6 @@
 import React from "react";
 import { RiArrowLeftUpLine } from "react-icons/ri";
-import { storeType } from "../../../types/store.type";
+import { storeType } from "../../types/store.type";
 type typePorps = {
   store: storeType;
 };

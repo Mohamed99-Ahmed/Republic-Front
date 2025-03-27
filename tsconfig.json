@@ -22,6 +22,6 @@
       "@/*": ["./src/*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/CategoryMeal/CategoryMeal.tsx", "context/category.context.tsx", "src/components/Meals/Meals.tsx", "src/components/productItem/ProductItem.jsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "src/components/CategoryMeal/CategoryMeal.tsx", "context/category.context.tsx", "src/components/Meals/Meals.tsx", "src/components/productItem/ProductItem.jsx", "src/Hooks/useAxios.tsx"],
   "exclude": ["node_modules"]
 }
