@@ -1,39 +1,55 @@
 "use client";
 import Image from "next/image";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import testImg from "../../../public/imgs/433964272_900878548506273_1143103208391292958_n.jpg";
 
 import { FaShoppingBasket } from "react-icons/fa";
 
-export default function CartProduct() {
+import { Item } from "@/types/cart.type";
+import { CartContex } from "@/context/cartContext/cartContext";
+type props = {
+  productCart: Item;
+};
+export default function CartProduct({ productCart }: props) {
   //  state
-  const [quantity, setQuantity] = useState<number>(0);
-  const [size, setSize] = useState<string>("");
-
+  const [quantity, setQuantity] = useState<number>(productCart.quantity);
+  // const [ setSize] = useState<string>("");
+  console.log(productCart);
+  const { removeProdcut, getCart } = useContext(CartContex);
   //   function
   function handleMinus() {
     if (quantity > 1) {
       setQuantity(quantity - 1);
     }
   }
-
+  async function removeProdcutFromCart() {
+    await removeProdcut(productCart.product._id);
+    await getCart();
+  }
   // return
   return (
     <>
       <div className="item bg-mColor items-center rounded-md p-4 justify-between flex flex-col gap-2  md:gap-4 md:flex-row ">
         <Image
-          src={testImg}
+          src={
+            productCart.product.imageCover
+              ? productCart.product.imageCover
+              : testImg
+          }
           alt="img test"
-          className="  h-[200px] md:h-[200px] md:w-[200px] object-cover "
+          width={200}
+          height={200}
+          className="h-[200px] w-[250px] md:h-[200px] md:w-[200px] object-cover"
         ></Image>
         <article className="flex gap-4 flex-row-reverse md:flex-col justify-between items-center ">
           <p className="name font-semibold capitalize text-center">
             {" "}
-            worldware Bruger
+            {productCart.product.name}
           </p>
           <button
             className=" flex mx-auto items-center gap-2 underline  text-red-900  text-lg whitespace-nowrap"
             dir="ltr"
+            onClick={() => removeProdcutFromCart()}
           >
             ازالة
             <FaShoppingBasket className=" font-semibold underline" />
@@ -52,7 +68,7 @@ export default function CartProduct() {
               <div className="flex justify-between items-center gap-3">
                 <div
                   className="size-single flex items-center  gap-2"
-                  onClick={() => setSize("single")}
+                  // onClick={() => setSize("single")}
                 >
                   <input
                     type="radio"
@@ -66,17 +82,18 @@ export default function CartProduct() {
                 </div>
                 <div
                   className="size-item flex items-center  gap-2"
-                  onClick={() => setSize("double")}
-                ></div>
-                <input
-                  type="radio"
-                  name="size"
-                  id="double"
-                  className="h-5 w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
-                />
-                <label htmlFor="double" className="text-lg">
-                  double
-                </label>
+                  // onClick={() => setSize("double")}
+                >
+                  <input
+                    type="radio"
+                    name="size"
+                    id="double"
+                    className="h-5 w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
+                  />
+                  <label htmlFor="double" className="text-lg">
+                    double
+                  </label>
+                </div>
               </div>
             </div>
             <div className="choice">
@@ -93,16 +110,17 @@ export default function CartProduct() {
                     regualr
                   </label>
                 </div>
-                <div className="size-item flex items-center  gap-2"></div>
-                <input
-                  type="radio"
-                  name="choice"
-                  id="spicy"
-                  className="h-5 w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
-                />
-                <label htmlFor="spicy" className="text-lg">
-                  spicy
-                </label>
+                <div className="size-item flex items-center  gap-2">
+                  <input
+                    type="radio"
+                    name="choice"
+                    id="spicy"
+                    className="h-5 w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
+                  />
+                  <label htmlFor="spicy" className="text-lg">
+                    spicy
+                  </label>
+                </div>
               </div>
             </div>
           </main>
@@ -140,7 +158,7 @@ export default function CartProduct() {
               <span>الاجمالي</span>
               <span className="price text-sColor font-bold whitespace-nowrap">
                 {" "}
-                250 Egy
+                {productCart.itemTotal}
               </span>
             </p>
           </div>

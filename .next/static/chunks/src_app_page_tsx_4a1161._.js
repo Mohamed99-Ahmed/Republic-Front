@@ -1,0 +1,17 @@
+(globalThis.TURBOPACK = globalThis.TURBOPACK || []).push([
+    "static/chunks/src_app_page_tsx_4a1161._.js",
+    {},
+]);
+(globalThis.TURBOPACK_CHUNK_LISTS = globalThis.TURBOPACK_CHUNK_LISTS || []).push({
+  "path": "static/chunks/src_app_page_tsx_4a1161._.js",
+  "chunks": [
+    "static/chunks/[root of the server]__0c91d5._.css",
+    "static/chunks/node_modules_next_ee60d3._.js",
+    "static/chunks/node_modules_axios_lib_c4c49c._.js",
+    "static/chunks/node_modules_react-icons_bi_index_mjs_cba0e8._.js",
+    "static/chunks/node_modules_react-icons_io_index_mjs_d35cf4._.js",
+    "static/chunks/node_modules_swiper_3579eb._.js",
+    "static/chunks/_05d48f._.js"
+  ],
+  "source": "dynamic"
+});

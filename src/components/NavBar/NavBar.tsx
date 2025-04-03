@@ -1,12 +1,14 @@
 "use client";
 import Link from "next/link";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import { CiLogout } from "react-icons/ci";
 import { Kufam } from "next/font/google";
 import { usePathname, useRouter } from "next/navigation";
 import { FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
+import { authContext } from "@/context/AuthContext/AuthContext";
+import { CiLogin } from "react-icons/ci";
 
 const kufam = Kufam({
   subsets: ["arabic"],
@@ -17,23 +19,23 @@ export default function NavBar() {
   const path = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
+  const { token, logOut, logIn } = useContext(authContext) as {
+    token: string | null; // or boolean if that's what you're using
+    logOut: () => void;
+    logIn: () => void;
+  };
 
   // in updatin phase of component
 
   function toggleNav() {
     setIsOpen((prev) => !prev);
   }
-  //logout funciton
-  function logOut() {
-    if (true) {
-      // dispatch(LogOut())
-      localStorage.removeItem("token");
-      setTimeout(() => {
-        router.push("/login");
-      }, 3000);
-    } else {
-      router.push("/signup");
+  // handle login and logout
+  function handleLog() {
+    if (token) {
+      logOut();
     }
+    logIn();
   }
 
   return (
@@ -51,24 +53,35 @@ export default function NavBar() {
           {/* toggle nav */}
           <div className=" m-0 flex-grow md:flex-grow-0  justify-end inline-flex gap-2 self-end sm:self-auto md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
             {/* wisthlist   */}
-            <FaHeart
-              className="text-2xl cursor-pointer"
-              onClick={() => {
-                router.push("/wishlist");
-              }}
-            />
-            {/*  cart */}
-            <FaCartShopping
-              className="text-2xl cursor-pointer"
-              onClick={() => {
-                router.push("/cart");
-              }}
-            />
-            {/* logout */}
-            <a className="logout flex gap-3 items-center cursor-pointer">
-              <button onClick={() => logOut()}> تسجيل الخروح </button>
-              <CiLogout className="text-xl" />
+            {token && (
+              <>
+                <FaHeart
+                  className="text-2xl cursor-pointer"
+                  onClick={() => {
+                    router.push("/wishlist");
+                  }}
+                />
+                <FaCartShopping
+                  className="text-2xl cursor-pointer"
+                  onClick={() => {
+                    router.push("/cart");
+                  }}
+                />
+              </>
+            )}
+            {/* handle log */}
+            <a className=" flex gap-3 items-center cursor-pointer">
+              <button onClick={() => handleLog()}>
+                {" "}
+                {token ? "تسحيل الخروج" : "تسجيل الدخول "}
+              </button>
+              {token ? (
+                <CiLogout className="text-xl" />
+              ) : (
+                <CiLogin className="text-xl" />
+              )}
             </a>
+
             {/* start toggle  */}
             <div className="toogle button flex font-semibold text-xl items-center justify-center cursor-pointer md:hidden">
               <HiMiniBars3BottomLeft
@@ -112,25 +125,24 @@ export default function NavBar() {
                   href="/stores"
                   className={`${
                     path === "/stores" ? "text-sColor font-semibold" : ""
-                  }text-black navLink block py-2 px-3 rounded md:bg-transparent hover:text- `}
+                  }text-black navLink block py-2 px-3 rounded md:bg-transparent hover:text-sColor `}
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   فروعنا
                 </Link>
               </li>
               <li>
-                <Link
+             {  token && <Link
                   href="/cart"
                   className={`${
                     path === "/opinions" ? "text-sColor font-semibold" : ""
                   }text-black navLink block py-2 px-3 rounded md:bg-transparent hover:text-sColor `}
                   onClick={() => {
-                    setIsOpen(!isOpen)
-                  }
-                  }
+                    setIsOpen(!isOpen);
+                  }}
                 >
                   عربة التسوق
-                </Link>
+                </Link>}
               </li>
             </ul>
           </div>

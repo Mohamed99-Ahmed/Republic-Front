@@ -4,6 +4,7 @@ import "swiper/css";
 
 import Header from "@/components/Header/Header";
 import Meals from "@/components/Meals/Meals";
+import Slider from "@/components/Slider/Slider";
 
 export default function HomeHeader() {
 
@@ -11,6 +12,7 @@ export default function HomeHeader() {
     <>
       <Header />
       <Meals/>
+      <Slider/>
     </>
   );
 }

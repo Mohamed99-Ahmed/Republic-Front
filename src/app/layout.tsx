@@ -39,10 +39,8 @@ export default function RootLayout({
             <NavBar />
             {/* pages of website */}
             <div className="min-h-screen pt-[128px] sm:pt-[96px]  bg-mColor  bg-back">
-              <div className="   py-10 flex-grow relative ">
-
+              <div className="   pb-10 flex-grow relative ">
                 {children}
-
               </div>
             </div>
             {/* Footer component */}

@@ -185,8 +185,7 @@ async function Stores() {
                 method: "GET"
             };
             const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].request(options);
-            console.log(data.data.stores);
-            return data.data.stores;
+            return data.data.data;
         } catch (err) {
             console.log(err);
         }
@@ -201,18 +200,18 @@ async function Stores() {
                     store: store
                 }, store._id, false, {
                     fileName: "[project]/src/app/stores/page.tsx",
-                    lineNumber: 78,
+                    lineNumber: 77,
                     columnNumber: 18
                 }, this);
             })
         }, void 0, false, {
             fileName: "[project]/src/app/stores/page.tsx",
-            lineNumber: 76,
+            lineNumber: 75,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/stores/page.tsx",
-        lineNumber: 75,
+        lineNumber: 74,
         columnNumber: 5
     }, this);
 }

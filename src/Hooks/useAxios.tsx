@@ -8,7 +8,9 @@ interface UseAxiosProps {
   method?: Method;
   url?: string;
   data?: unknown;
-  headers?: AxiosRequestHeaders;
+  headers?: {
+    Authorization: string;
+  };
   toastSuccess?: string;
   toastLoading?: string;
 }
@@ -22,7 +24,8 @@ const useAxios = (initialConfig: UseAxiosProps) => {
   useEffect(() => {
     if (axiosConfig.run) {
       const fetchData = async () => {
-        const loadToast = toast.loading(axiosConfig.toastLoading);
+        let loadToast;
+        if (axiosConfig.toastLoading) toast.loading(axiosConfig.toastLoading);
         setLoading(true);
         try {
           const response = await axios.request({
@@ -32,9 +35,10 @@ const useAxios = (initialConfig: UseAxiosProps) => {
             headers: axiosConfig.headers,
           });
 
-          toast.dismiss(loadToast);
+          if (axiosConfig.toastLoading) toast.dismiss(loadToast);
           setResponseData(response.data);
-          toast.success(axiosConfig.toastSuccess);
+          console.log(responseData);
+          if (axiosConfig.toastLoading) toast.success(axiosConfig.toastSuccess);
           setErrorMessage("");
         } catch (err: any) {
           toast.dismiss(loadToast);

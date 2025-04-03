@@ -10,6 +10,7 @@ interface productType {
     imageCover: string,
     description: string
 }
+
 interface categoryType   {
     createdAt: string,
     _id: string,
@@ -21,4 +22,4 @@ interface categoryType   {
  type categoriesType = categoryType[];
  export default categoryType
 // Export the interfaces and type
-export type { productType, categoryType, categoriesType };
+export type { productType, categoryType, categoriesType};

@@ -64,8 +64,7 @@ export default async function Stores() {
         method: "GET",
       };
       const { data } = await axios.request(options);
-      console.log(data.data.stores);
-      return data.data.stores;
+      return data.data.data;
     } catch (err) {
       console.log(err);
     }
