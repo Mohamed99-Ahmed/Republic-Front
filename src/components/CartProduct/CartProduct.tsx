@@ -14,20 +14,21 @@ export default function CartProduct({ productCart }: props) {
   //  state
   const [quantity, setQuantity] = useState<number>(productCart.quantity);
   // const [ setSize] = useState<string>("");
-  console.log(productCart);
-  const { removeProdcut, getCart } = useContext(CartContex);
+  const { removeProdcut,addProductToCart } = useContext(CartContex);
   //   function
   function handleMinus() {
     if (quantity > 1) {
       setQuantity(quantity - 1);
+      addProductToCart(productCart.product._id,(quantity - 1) )
     }
+    
   }
   async function removeProdcutFromCart() {
     await removeProdcut(productCart.product._id);
-    await getCart();
   }
   // return
   return (
+    productCart.product && 
     <>
       <div className="item bg-mColor items-center rounded-md p-4 justify-between flex flex-col gap-2  md:gap-4 md:flex-row ">
         <Image
@@ -126,14 +127,8 @@ export default function CartProduct({ productCart }: props) {
           </main>
 
           <div className="space-y-4">
-            <textarea
-              name="ملاحظات"
-              id=""
-              placeholder="اكتب هنا ملاحظاتك"
-              className="w-full h-20 p-3 text-right text-gray-700 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-sColor focus:border-sColor placeholder-gray-400 shadow-sm transition-all duration-300 ease-in-out resize-none"
-            ></textarea>
-
-            <div className="flex self-stretch rounded-md border border-gray-300 overflow-hidden">
+            <div className="flex self-stretch rounded-md border border-gray-300 overflow-hidden"
+            >
               <button
                 aria-label="decreament "
                 className="bg-gray-300 px-4 py-2 "
@@ -142,13 +137,17 @@ export default function CartProduct({ productCart }: props) {
                 {" "}
                 -{" "}
               </button>
-              <span className="number-product grow flex items-center justify-center font-bold">
+              <span className="number-product grow flex items-center justify-center font-bold p-4">
                 {quantity}
               </span>
               <button
                 aria-label="increament  "
                 className="bg-sColor text-whitep-2 px-4 py-2 "
-                onClick={() => setQuantity(quantity + 1)}
+                onClick={() => {
+                  setQuantity(quantity + 1)
+                  addProductToCart(productCart.product._id,(quantity + 1) )
+                }
+                }
               >
                 {" "}
                 +{" "}
@@ -156,7 +155,7 @@ export default function CartProduct({ productCart }: props) {
             </div>
             <p className="flex flex-col  gap-1 items-center" dir="ltr">
               <span>الاجمالي</span>
-              <span className="price text-sColor font-bold whitespace-nowrap">
+              <span className="price text-sColor font-bold whitespace-nowrap px-4">
                 {" "}
                 {productCart.itemTotal}
               </span>

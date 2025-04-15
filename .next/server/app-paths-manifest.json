@@ -1,6 +1,9 @@
 {
   "/page": "app/page.js",
-  "/cart/page": "app/cart/page.js",
-  "/menu/page": "app/menu/page.js",
-  "/stores/page": "app/stores/page.js"
+  "/controle/page": "app/controle/page.js",
+  "/controle/orders/page": "app/controle/orders/page.js",
+  "/controle/stores/page": "app/controle/stores/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
+  "/controle/users/page": "app/controle/users/page.js",
+  "/cart/page": "app/cart/page.js"
 }

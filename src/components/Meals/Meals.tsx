@@ -21,7 +21,7 @@ export default async function Meals() {
   
   return (
     <main className="space-y-20 mt-20">
-      {categories.map((category: categoryType) => {
+      {categories?.map((category: categoryType) => {
         return <CategoryMeal key={category.id} category={category} />;
       })}
     </main>

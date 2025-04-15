@@ -19,12 +19,8 @@ export default function NavBar() {
   const path = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
-  const { token, logOut, logIn } = useContext(authContext) as {
-    token: string | null; // or boolean if that's what you're using
-    logOut: () => void;
-    logIn: () => void;
-  };
-
+  const { token, logOut, logIn, payload } = useContext(authContext);
+  console.log("payload", payload);
   // in updatin phase of component
 
   function toggleNav() {
@@ -97,13 +93,13 @@ export default function NavBar() {
             } md:h-auto `}
             id="navbar-sticky"
           >
-            <ul className="flex flex-col md:p-0  mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-8 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white  ">
+            <ul className="flex flex-col md:p-0 md:text-[0.9rem] xl:text-2xl mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-1 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white  ">
               <li>
                 <Link
                   href="/"
                   className={`${
                     path === "/" ? "text-sColor font-semibold" : ""
-                  }text-black navLink block py-2 px-3 rounded md:bg-transparent hover:text-sColor `}
+                  }text-black navLink block md:px-1 py-2 lg:px-3 rounded md:bg-transparent hover:text-sColor `}
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   الرئيسة
@@ -114,7 +110,7 @@ export default function NavBar() {
                   href="/menu"
                   className={`${
                     path === "/menu" ? "text-sColor font-semibold" : ""
-                  }text-black navLink block py-2 px-3 rounded md:bg-transparent hover:text-sColor `}
+                  }text-black navLink block md:px-1 py-2 lg:px-3 rounded md:bg-transparent hover:text-sColor `}
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   المنيو
@@ -125,24 +121,56 @@ export default function NavBar() {
                   href="/stores"
                   className={`${
                     path === "/stores" ? "text-sColor font-semibold" : ""
-                  }text-black navLink block py-2 px-3 rounded md:bg-transparent hover:text-sColor `}
+                  }text-black navLink block md:px-1 py-2 lg:px-3 rounded md:bg-transparent hover:text-sColor `}
                   onClick={() => setIsOpen(!isOpen)}
                 >
                   فروعنا
                 </Link>
               </li>
               <li>
-             {  token && <Link
-                  href="/cart"
-                  className={`${
-                    path === "/opinions" ? "text-sColor font-semibold" : ""
-                  }text-black navLink block py-2 px-3 rounded md:bg-transparent hover:text-sColor `}
-                  onClick={() => {
-                    setIsOpen(!isOpen);
-                  }}
-                >
-                  عربة التسوق
-                </Link>}
+                {token && (
+                  <Link
+                    href="/cart"
+                    className={`${
+                      path === "/cart" ? "text-sColor font-semibold" : ""
+                    }text-black navLink block md:px-1 py-2 lg:px-3 rounded md:bg-transparent hover:text-sColor `}
+                    onClick={() => {
+                      setIsOpen(!isOpen);
+                    }}
+                  >
+                    عربة التسوق
+                  </Link>
+                )}
+              </li>
+              <li>
+                {token && (
+                  <Link
+                    href="/orders"
+                    className={`${
+                      path === "/orders" ? "text-sColor font-semibold" : ""
+                    }text-black navLink block md:px-1 py-2 lg:px-3 rounded md:bg-transparent hover:text-sColor `}
+                    onClick={() => {
+                      setIsOpen(!isOpen);
+                    }}
+                  >
+                    اوردات
+                  </Link>
+                )}
+              </li>
+              <li>
+                {payload?.role === "admin" && (
+                  <Link
+                    href="/controle"
+                    className={`${
+                      path === "/controle" ? "text-sColor font-semibold" : ""
+                    }text-black navLink block md:px-1 py-2 lg:px-3 rounded md:bg-transparent hover:text-sColor `}
+                    onClick={() => {
+                      setIsOpen(!isOpen);
+                    }}
+                  >
+                    لوحة التحكم
+                  </Link>
+                )}
               </li>
             </ul>
           </div>

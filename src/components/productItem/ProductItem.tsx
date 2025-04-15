@@ -32,6 +32,7 @@ export default function ProductItem({ product }: propsType) {
     }
   }
   return (
+    product && 
     <>
       <figure className="flex flex-col justify-between relative overflow-hidden  group/parent hover:shadow-md items-center gap-4 p-4 bg-white rounded-md hover:border hover:border-sColor">
         {product.imageCover ? (

@@ -59,7 +59,7 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 function Button({ type, text, className, ariaLabel, onClick }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-        className: `capitalize  text-xl text-slate-200 px-2 py-2 rounded-full bg-sColor text-center ${className}`,
+        className: `capitalize px-4  text-xl text-slate-200  py-2 rounded-full bg-sColor text-center ${className}`,
         "aria-label": ariaLabel,
         onClick: onClick,
         type: type,
@@ -122,7 +122,7 @@ function ProductItem({ product }) {
             addProductToCart(product._id, newQuantity);
         }
     }
-    return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
+    return product && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["Fragment"], {
         children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("figure", {
             className: "flex flex-col justify-between relative overflow-hidden  group/parent hover:shadow-md items-center gap-4 p-4 bg-white rounded-md hover:border hover:border-sColor",
             children: [
@@ -134,7 +134,7 @@ function ProductItem({ product }) {
                     height: 300
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 38,
+                    lineNumber: 39,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "w-full h-[300px] rounded-md object-contain flex items-center justify-center",
@@ -142,12 +142,12 @@ function ProductItem({ product }) {
                         className: "font-bold text-gray-600 text-[100px]"
                     }, void 0, false, {
                         fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                        lineNumber: 47,
+                        lineNumber: 48,
                         columnNumber: 13
                     }, this)
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 46,
+                    lineNumber: 47,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("h3", {
@@ -155,7 +155,7 @@ function ProductItem({ product }) {
                     children: product.name
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 50,
+                    lineNumber: 51,
                     columnNumber: 9
                 }, this),
                 typeof product.price === "object" ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -170,7 +170,7 @@ function ProductItem({ product }) {
                                     children: "single : "
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 56,
+                                    lineNumber: 57,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -181,13 +181,13 @@ function ProductItem({ product }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 57,
+                                    lineNumber: 58,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 55,
+                            lineNumber: 56,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -198,7 +198,7 @@ function ProductItem({ product }) {
                                     children: "double : "
                                 }, void 0, false, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 62,
+                                    lineNumber: 63,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -209,19 +209,19 @@ function ProductItem({ product }) {
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                                    lineNumber: 63,
+                                    lineNumber: 64,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 61,
+                            lineNumber: 62,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 54,
+                    lineNumber: 55,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
                     className: "price text-sColor font-bold ",
@@ -231,7 +231,7 @@ function ProductItem({ product }) {
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 69,
+                    lineNumber: 70,
                     columnNumber: 11
                 }, this),
                 quantity ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -250,7 +250,7 @@ function ProductItem({ product }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 74,
+                            lineNumber: 75,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -258,7 +258,7 @@ function ProductItem({ product }) {
                             children: quantity
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 84,
+                            lineNumber: 85,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -274,13 +274,13 @@ function ProductItem({ product }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 87,
+                            lineNumber: 88,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 73,
+                    lineNumber: 74,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Button$2f$Button$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
                     text: " اضافتة الي العربة",
@@ -291,7 +291,7 @@ function ProductItem({ product }) {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 99,
+                    lineNumber: 100,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -301,7 +301,7 @@ function ProductItem({ product }) {
                             className: "text-3xl text-gray-700 font-bold cursor-pointer"
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 110,
+                            lineNumber: 111,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["FaHeart"], {
@@ -309,19 +309,19 @@ function ProductItem({ product }) {
                             onClick: ()=>setAddToWishList(!addToWishList)
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 111,
+                            lineNumber: 112,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 109,
+                    lineNumber: 110,
                     columnNumber: 9
                 }, this)
             ]
         }, void 0, true, {
             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-            lineNumber: 36,
+            lineNumber: 37,
             columnNumber: 7
         }, this)
     }, void 0, false);

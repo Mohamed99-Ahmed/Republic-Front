@@ -37,7 +37,7 @@ const useAxios = (initialConfig: UseAxiosProps) => {
 
           if (axiosConfig.toastLoading) toast.dismiss(loadToast);
           setResponseData(response.data);
-          console.log(responseData);
+    
           if (axiosConfig.toastLoading) toast.success(axiosConfig.toastSuccess);
           setErrorMessage("");
         } catch (err: any) {

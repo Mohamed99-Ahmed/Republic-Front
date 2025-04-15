@@ -404,7 +404,6 @@ const useAxios = (initialConfig)=>{
                             });
                             if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].dismiss(loadToast);
                             setResponseData(response.data);
-                            console.log(responseData);
                             if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(axiosConfig.toastSuccess);
                             setErrorMessage("");
                         } catch (err) {
@@ -518,14 +517,19 @@ function CartContext({ children }) {
     }
     // remove product function
     async function removeProdcut(productId) {
-        setAxiosRemove({
-            url: `https://backend-three-nu-89.vercel.app/cart/${productId}`,
-            ...axiosConfigRemove,
-            toastLoading: "جاري ازالة المنتج من عربة التسوق",
-            toastSuccess: "تم ازالة المنتج من عربة التسوق",
-            run: true
-        });
+        console.log("remove loading");
+        await async function remove() {
+            setAxiosRemove({
+                url: `https://backend-three-nu-89.vercel.app/cart/${productId}`,
+                ...axiosConfigRemove,
+                toastLoading: "جاري ازالة المنتج من عربة التسوق",
+                toastSuccess: "تم ازالة المنتج من عربة التسوق",
+                run: true
+            });
+        }();
+        console.log("done remove");
         getCart();
+        console.log("after");
     }
     // clear product function
     async function clearCart() {
@@ -549,11 +553,11 @@ function CartContext({ children }) {
         children: children
     }, void 0, false, {
         fileName: "[project]/src/context/cartContext/cartContext.tsx",
-        lineNumber: 113,
+        lineNumber: 116,
         columnNumber: 5
     }, this);
 }
-_s(CartContext, "jgvZPuvj/bPwoaT0WFOB0Ifcu24=", false, function() {
+_s(CartContext, "58sGHMyEKJmG91bLYVIadH7EPN0=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Hooks$2f$useAxios$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Hooks$2f$useAxios$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],

@@ -18,6 +18,12 @@ type resetPasswordType  = {
     password: string;
     rePassword: string;
 }
+type payload = {
+    exp: number,
+    iat: number, 
+    id: string,
+    name: string,
+    role: string
+}
 
-
-export type { submitType,loginType, forgetPasswordType,resetPasswordType };
+export type { submitType,loginType, forgetPasswordType,resetPasswordType,payload };

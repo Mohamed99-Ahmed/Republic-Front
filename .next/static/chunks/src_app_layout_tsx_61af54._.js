@@ -13,8 +13,8 @@
     "static/chunks/node_modules_react-icons_hi2_index_mjs_d1d125._.js",
     "static/chunks/node_modules_react-icons_lib_74ccc9._.js",
     "static/chunks/node_modules_axios_lib_c4c49c._.js",
-    "static/chunks/node_modules_239b96._.js",
-    "static/chunks/[root of the server]__93ef11._.js"
+    "static/chunks/node_modules_bbb517._.js",
+    "static/chunks/[root of the server]__6d2a62._.js"
   ],
   "source": "dynamic"
 });
