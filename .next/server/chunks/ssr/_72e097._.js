@@ -2668,7 +2668,7 @@ const _routercontextsharedruntime = __turbopack_require__("[project]/node_module
 const _imageloader = /*#__PURE__*/ _interop_require_default._(__turbopack_require__("[project]/node_modules/next/dist/shared/lib/image-loader.js [app-ssr] (ecmascript)"));
 const _usemergedref = __turbopack_require__("[project]/node_modules/next/dist/client/use-merged-ref.js [app-ssr] (ecmascript)");
 // This is replaced by webpack define plugin
-const configEnv = ("TURBOPACK compile-time value", JSON.parse('{"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":false,"domains":[],"remotePatterns":[{"protocol":"https","hostname":"ik.imagekit.io","pathname":"/MohamedAhmed/Rubublic%20Imgs/**"}]}'));
+const configEnv = ("TURBOPACK compile-time value", JSON.parse('{"deviceSizes":[640,750,828,1080,1200,1920,2048,3840],"imageSizes":[16,32,48,64,96,128,256,384],"path":"/_next/image","loader":"default","dangerouslyAllowSVG":false,"unoptimized":false,"domains":[],"remotePatterns":[{"protocol":"https","hostname":"ik.imagekit.io","pathname":"/MohamedAhmed/Rubublic%20Imgs/**"},{"protocol":"https","hostname":"backend-three-nu-89.vercel.app","pathname":"/public/imgs/**"}]}'));
 if (typeof window === 'undefined') {
     ;
     globalThis.__NEXT_IMAGE_IMPORTED = true;

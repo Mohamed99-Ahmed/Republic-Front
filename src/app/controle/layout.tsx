@@ -1,15 +1,20 @@
+"use client"
 import ControleAside from "@/components/ControleAside/ControleAside";
-import React from "react";
+import { authContext } from "@/context/AuthContext/AuthContext";
+import React, { useContext } from "react";
 
-export default function layout({
+export default function Layout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const {payload} = useContext(authContext);
+  console.log(payload);
   return (
-    <main className="relative min-h-screen">
-      <ControleAside></ControleAside>
-      <div className="  pt-20 lg:pt-12 lg:mr-40">{children}</div>
+  <main className="relative min-h-screen">
+      {  payload?.role === "admin" &&
+        <><ControleAside></ControleAside>
+      <div className="  pt-20 lg:pt-12 lg:mr-40">{children}</div></>}
     </main>
   );
 }

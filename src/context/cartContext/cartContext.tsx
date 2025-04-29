@@ -1,137 +1,151 @@
 "use client";
-import useAxios from "@/Hooks/useAxios";
 import React, { createContext, ReactNode, useContext } from "react";
 import { authContext } from "../AuthContext/AuthContext";
-import { ApiResponse } from "@/types/cart.type";
-
+import { CartType } from "@/types/responseTypes";
+import axios from "axios";
+import toast from "react-hot-toast";
+type AddProduct = {
+  size:string, productId:string, quantity:number, description? : string,choice:string
+}
 interface CartContextType {
-  addProductToCart: (productId: string, quantity: number) => Promise<void>;
-  getCart: () => Promise<void>;
+  addProductToCart: (arg: AddProduct) => Promise<void>;
+  getMyCart: () => Promise<void>;
   clearCart: () => Promise<void>;
+  getAllCarts: () => Promise<void>;
   removeProdcut: (productCart: string) => Promise<void>;
-  responseData: ApiResponse | null;
-  responseDataRemove: ApiResponse | null;
+  carts: CartType[] | null;
+  mycart: CartType | null;
 }
 
 export const CartContex = createContext<CartContextType>({
   addProductToCart: async () => {},
-  getCart: async () => {},
+  getMyCart: async () => {},
   removeProdcut: async () => {},
   clearCart: async () => {},
-  responseData: null,
-  responseDataRemove: null,
+  getAllCarts: async () => {},
+  carts: null,
+  mycart: null,
 });
 
 export default function CartContext({ children }: { children: ReactNode }) {
+  // states
   const { token } = useContext(authContext);
-  // axios config for add product to cart
-  const { axiosConfig: axiosConfigAdd, setAxios: setAxiosAdd } = useAxios({
-    run: false,
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-    toastLoading: "جاري اضافة العنصر الي عربة التسوق",
-    toastSuccess: " تم اضافته بنجاح",
-  });
-  const {
-    axiosConfig: axiosConfigRemove,
-    setAxios: setAxiosRemove,
-    responseData: responseDataRemove,
-  } = useAxios({
-    run: false,
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const {
-    axiosConfig: axiosConfigACart,
-    setAxios: setAxiosCart,
-    responseData,
-  } = useAxios({
-    run: false,
-    url: `https://backend-three-nu-89.vercel.app/cart`,
-    method: "GET",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  const { axiosConfig: axiosConfigClear, setAxios: setAxiosClear } = useAxios({
-    run: false,
-    url: `https://backend-three-nu-89.vercel.app/cart`,
-    toastLoading: "جاري مسح جميع المنتجات",
-    toastSuccess: "تم مسح جميع المنتجات",
-    method: "DELETE",
-    headers: {
-      Authorization: `Bearer ${token}`,
-    },
-  });
-  // const { axiosConfig: axiosConfigAllCarts, setAxios: setAxiosAllCarts } = useAxios({
-  //   run: false,
-  //   url: `https://backend-three-nu-89.vercel.app/cart`,
-  //   toastLoading: "جاري مسح جميع المنتجات",
-  //   toastSuccess: "تم مسح جميع المنتجات",
-  //   method: "DELETE",
-  //   headers: {
-  //     Authorization: `Bearer ${token}`,
-  //   },
-  // });
-  //get All carts
+  const [carts, setCarts] = React.useState<CartType[] | null>(null);
+  const [mycart, setMyCart] = React.useState<CartType | null>(null);
 
-  // get cart function
-  async function getCart() {
-    setAxiosCart({
-      ...axiosConfigACart,
-      run: true,
-    });
-  
+  // get All carts function
+  async function getAllCarts() {
+    try {
+      const options = {
+        url: "https://backend-three-nu-89.vercel.app/cart/allCarts",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.request(options);
+      if (data.status === "success") {
+        setCarts(data.data.data);
+      }
+    } catch (err) {
+      console.log(err);
+      
+    }
   }
-  // Add product function
-  async function addProductToCart(productId: string, quantity: number) {
-    setAxiosAdd({
-      ...axiosConfigAdd,
-      url: `https://backend-three-nu-89.vercel.app/cart/${productId}/${quantity}`,
-      run: true,
-    });
+  // get myCart function
+  async function getMyCart() {
+    try {
+      const options = {
+        url: "https://backend-three-nu-89.vercel.app/cart",
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.request(options);
+      if (data.status === "success") {
+        setMyCart(data.data.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
   }
-  // remove product function
+  // add product to cart function
+  async function addProductToCart(bodyData:AddProduct) {
+    try {
+      const options = {
+        url: `https://backend-three-nu-89.vercel.app/cart`,
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+        data:bodyData,
+        
+      };
+      const { data } = await axios.request(options);
+      if (data.status === "success") {
+        toast.success("تم اضافة المنتج بنجاح");
+        getMyCart();
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  }
+  // remove product from cart function
   async function removeProdcut(productId: string) {
-    console.log("remove loading")
-    await (async function remove() {
-      setAxiosRemove({
+    const loadingToast = toast.loading("جاري ازالة المنتج من عربة التسوق");
+    try {
+      const options = {
         url: `https://backend-three-nu-89.vercel.app/cart/${productId}`,
-        ...axiosConfigRemove,
-        toastLoading: "جاري ازالة المنتج من عربة التسوق",
-        toastSuccess: "تم ازالة المنتج من عربة التسوق",
-        run: true,
-      });
-    })();
-    console.log("done remove")
-      getCart();
-      console.log("after")
-
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.request(options);
+      if (data.status === "success") {
+        toast.dismiss(loadingToast);
+        toast.success("تم ازالة المنتج بنجاح");
+        getMyCart();
+      }
+    } catch (err) {
+      console.log(err);
+      toast.dismiss(loadingToast);
+    }
   }
   // clear product function
   async function clearCart() {
-    await (async function clear() {
-      setAxiosClear({
-        ...axiosConfigClear,
-        run: true,
-      });
-    })();
-    getCart();
+    const loadingToast = toast.loading("جاري ازالة جميع المنتجات من العربة");
+    try {
+      const options = {
+        url: `https://backend-three-nu-89.vercel.app/cart`,
+        method: "DELETE",
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      };
+      const { data } = await axios.request(options);
+      if (data.status === "success") {
+        toast.dismiss(loadingToast);
+        toast.success("تم ازالة جميع المنتجات من العربة");
+        getMyCart();
+      }
+    } catch (err) {
+      console.log(err);
+      toast.dismiss(loadingToast);
+    }
   }
 
   return (
     <CartContex.Provider
       value={{
         addProductToCart,
-        getCart,
-        responseData,
+        getMyCart,
         removeProdcut,
-        responseDataRemove,
         clearCart,
+        carts,
+        getAllCarts,
+        mycart,
       }}
     >
       {children}

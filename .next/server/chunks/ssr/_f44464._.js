@@ -20,23 +20,24 @@ function Header() {
                 className: "vidioBurger ",
                 children: /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("video", {
                     src: videoUrl,
+                    className: "max-h-[70vh] lg:max-h-[80vh]  w-full object-cover object-center",
                     autoPlay: true,
                     loop: true,
                     muted: true
                 }, void 0, false, {
                     fileName: "[project]/src/components/Header/Header.tsx",
-                    lineNumber: 13,
-                    columnNumber: 9
+                    lineNumber: 12,
+                    columnNumber: 11
                 }, this)
             }, void 0, false, {
                 fileName: "[project]/src/components/Header/Header.tsx",
-                lineNumber: 12,
-                columnNumber: 11
+                lineNumber: 11,
+                columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/components/Header/Header.tsx",
-            lineNumber: 11,
-            columnNumber: 11
+            lineNumber: 10,
+            columnNumber: 7
         }, this)
     }, void 0, false);
 }
@@ -60,7 +61,7 @@ function Button({ type, text, className, ariaLabel, onClick }) {
         children: text
     }, void 0, false, {
         fileName: "[project]/src/components/Button/Button.tsx",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }
@@ -220,6 +221,11 @@ function ProductItem({ product }) {
                     lineNumber: 70,
                     columnNumber: 11
                 }, this),
+                /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("sizeAnd", {}, void 0, false, {
+                    fileName: "[project]/src/components/productItem/ProductItem.tsx",
+                    lineNumber: 73,
+                    columnNumber: 9
+                }, this),
                 quantity ? /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
                     className: "flex self-stretch rounded-md border border-gray-300 overflow-hidden",
                     children: [
@@ -236,7 +242,7 @@ function ProductItem({ product }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 75,
+                            lineNumber: 77,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("span", {
@@ -244,7 +250,7 @@ function ProductItem({ product }) {
                             children: quantity
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 85,
+                            lineNumber: 87,
                             columnNumber: 13
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
@@ -260,13 +266,13 @@ function ProductItem({ product }) {
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 88,
+                            lineNumber: 90,
                             columnNumber: 13
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 74,
+                    lineNumber: 76,
                     columnNumber: 11
                 }, this) : /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Button$2f$Button$2e$tsx__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["default"], {
                     text: " اضافتة الي العربة",
@@ -277,7 +283,7 @@ function ProductItem({ product }) {
                     }
                 }, void 0, false, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 100,
+                    lineNumber: 102,
                     columnNumber: 11
                 }, this),
                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -287,7 +293,7 @@ function ProductItem({ product }) {
                             className: "text-3xl text-gray-700 font-bold cursor-pointer"
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 111,
+                            lineNumber: 113,
                             columnNumber: 11
                         }, this),
                         /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$ssr$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$icons$2f$fa$2f$index$2e$mjs__$5b$app$2d$ssr$5d$__$28$ecmascript$29$__["FaHeart"], {
@@ -295,13 +301,13 @@ function ProductItem({ product }) {
                             onClick: ()=>setAddToWishList(!addToWishList)
                         }, void 0, false, {
                             fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                            lineNumber: 112,
+                            lineNumber: 114,
                             columnNumber: 11
                         }, this)
                     ]
                 }, void 0, true, {
                     fileName: "[project]/src/components/productItem/ProductItem.tsx",
-                    lineNumber: 110,
+                    lineNumber: 112,
                     columnNumber: 9
                 }, this)
             ]

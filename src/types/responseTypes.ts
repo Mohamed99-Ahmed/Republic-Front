@@ -1,13 +1,13 @@
 export interface User {
-    _id: string;
-    name: string;
-    email: string;
-    phone: number;
-    location: string;
-    role: string;
-    passwordChangedAt: string;
+    _id?: string;
+    name?: string;
+    email?: string;
+    phone?: number;
+    location?: string;
+    role?: string;
+    passwordChangedAt?: string;
+    photo?:string
   }
-  
   export interface Category {
     createdAt: string;
     _id: string;
@@ -33,22 +33,29 @@ export interface User {
     _id: string;
     itemTotal: number | null;
     id: string;
+    choice:string,
+    size:string
   }
-  
-  export interface Order {
+
+  export interface CartType {
+    _id: string;
+    id: string;
+    user: User;
+    items: Item[];
+    totalPrice: number;
+    __v: number;
+  }
+  export interface OrderType {
     _id: string;
     user: User;
+    cart: CartType;
+    cartCopy: CartType;
     items: Item[];
     createdAt: string;
     updatedAt: string;
     __v: number;
-    totalPrice: number | null;
+    price: number | null;
     id: string;
+    paid:boolean
   }
   
-  export interface ApiResponse {
-    status: string;
-    data: {
-      data: Order;
-    };
-  }

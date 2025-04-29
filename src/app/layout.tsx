@@ -38,7 +38,7 @@ export default function RootLayout({
             {/* Navbar component */}
             <NavBar />
             {/* pages of website */}
-            <div className="min-h-screen pt-[128px] sm:pt-[96px]  bg-mColor  bg-back">
+            <div className="min-h-screen pt-[128px] sm:pt-[96px] z-50  bg-mColor  bg-back">
               <div className="   pb-10 flex-grow relative ">
                 {children}
               </div>

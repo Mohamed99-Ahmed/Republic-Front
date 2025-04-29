@@ -1,9 +1,16 @@
 "use client";
 import ContoleLocation from "@/components/ControleLocation/ControleLocation";
-import React, { useState } from "react";
+import { storesContext } from "@/context/Stores/StoresContext";
+import React, { useContext, useEffect, useState } from "react";
 
 export default function ControleStores() {
   const [appearNew, setAppearNew] = useState<boolean>(false);
+  const {getAllStores,stores} =  useContext(storesContext);
+  // get all stores when the page loads
+  useEffect(() => {getAllStores()},[])
+  // rerender comoponent when the stores change
+  useEffect(() => {
+  },[stores])
   return (
     <div className="container space-y-8">
       {/* Adding new store */}
@@ -19,7 +26,10 @@ export default function ControleStores() {
 
       {/* paleces of stores */}
       <main className="grid gird-cols-1 md:grid-cols-2  gap-4">
-        <ContoleLocation />
+        {stores? stores.map((store)=>{
+          return  (<ContoleLocation key={store._id} store={store}/>)
+          }).reverse()
+        : ""}
       </main>
     </div>
   );

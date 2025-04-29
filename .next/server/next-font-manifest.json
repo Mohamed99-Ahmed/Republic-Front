@@ -2,31 +2,7 @@
   "app": {
     "[project]/src/app/page": [
       "static/media/iJWKBXyIfDnIV7nBrXyw023e-s.p.d54e5672.woff2",
-      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.fc8b3e85.woff2"
-    ],
-    "[project]/src/app/controle/page": [
-      "static/media/iJWKBXyIfDnIV7nBrXyw023e-s.p.d54e5672.woff2",
-      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.fc8b3e85.woff2"
-    ],
-    "[project]/src/app/controle/orders/page": [
-      "static/media/iJWKBXyIfDnIV7nBrXyw023e-s.p.d54e5672.woff2",
-      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.fc8b3e85.woff2"
-    ],
-    "[project]/src/app/controle/stores/page": [
-      "static/media/iJWKBXyIfDnIV7nBrXyw023e-s.p.d54e5672.woff2",
-      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.fc8b3e85.woff2"
-    ],
-    "[project]/src/app/_not-found/page": [
-      "static/media/iJWKBXyIfDnIV7nBrXyw023e-s.p.d54e5672.woff2",
-      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.fc8b3e85.woff2"
-    ],
-    "[project]/src/app/controle/users/page": [
-      "static/media/iJWKBXyIfDnIV7nBrXyw023e-s.p.d54e5672.woff2",
-      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.fc8b3e85.woff2"
-    ],
-    "[project]/src/app/cart/page": [
-      "static/media/iJWKBXyIfDnIV7nBrXyw023e-s.p.d54e5672.woff2",
-      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.fc8b3e85.woff2"
+      "static/media/C8ct4cY7pG7w_q6AJj07wXGFXRA-s.p.6c646c86.woff2"
     ]
   },
   "appUsingSizeAdjust": true,

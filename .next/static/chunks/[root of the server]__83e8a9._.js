@@ -12,14 +12,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 function Button({ type, text, className, ariaLabel, onClick }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-        className: `capitalize  text-xl text-slate-200 px-2 py-2 rounded-full bg-sColor text-center ${className}`,
+        className: `capitalize px-4  text-xl text-slate-200  py-2 rounded-full bg-sColor text-center ${className}`,
         "aria-label": ariaLabel,
         onClick: onClick,
         type: type,
         children: text
     }, void 0, false, {
         fileName: "[project]/src/components/Button/Button.tsx",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }
@@ -87,7 +87,8 @@ const useAxios = (initialConfig)=>{
             if (axiosConfig.run) {
                 const fetchData = {
                     "useAxios.useEffect.fetchData": async ()=>{
-                        const loadToast = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].loading(axiosConfig.toastLoading);
+                        let loadToast;
+                        if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].loading(axiosConfig.toastLoading);
                         setLoading(true);
                         try {
                             const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].request({
@@ -96,9 +97,9 @@ const useAxios = (initialConfig)=>{
                                 data: axiosConfig.data,
                                 headers: axiosConfig.headers
                             });
-                            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].dismiss(loadToast);
+                            if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].dismiss(loadToast);
                             setResponseData(response.data);
-                            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(axiosConfig.toastSuccess);
+                            if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(axiosConfig.toastSuccess);
                             setErrorMessage("");
                         } catch (err) {
                             __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].dismiss(loadToast);

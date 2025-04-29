@@ -37,15 +37,16 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/compiled/react/jsx-dev-runtime.js [app-client] (ecmascript)");
 ;
-function Button({ text, className, ariaLabel, onClick }) {
+function Button({ type, text, className, ariaLabel, onClick }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-        className: `capitalize  text-xl text-slate-200 px-2 py-2 rounded-full bg-sColor text-center ${className}`,
+        className: `capitalize px-4  text-xl text-slate-200  py-2 rounded-full bg-sColor text-center ${className}`,
         "aria-label": ariaLabel,
         onClick: onClick,
+        type: type,
         children: text
     }, void 0, false, {
         fileName: "[project]/src/components/Button/Button.tsx",
-        lineNumber: 10,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }

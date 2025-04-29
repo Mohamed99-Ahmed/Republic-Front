@@ -4,6 +4,7 @@ interface props {
   className?: string;
   ariaLabel: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void;
+
   type?: "button" | "submit" | "reset"; 
 }
 export default function Button({type, text, className, ariaLabel, onClick }: props) {

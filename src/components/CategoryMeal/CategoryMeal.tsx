@@ -2,10 +2,13 @@ import React from "react";
 import Title from "../Title/Title";
 import CardProduct from "../productItem/ProductItem";
 import categoryType from "../../types/category.type";
+
 type propsType = {
   category: categoryType;
 };
+
 export default function CategoryMeal({ category }: propsType) {
+  console.log("products", category);
   return (
     <>
       <div className="container">

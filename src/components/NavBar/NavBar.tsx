@@ -5,7 +5,6 @@ import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import { CiLogout } from "react-icons/ci";
 import { Kufam } from "next/font/google";
 import { usePathname, useRouter } from "next/navigation";
-import { FaHeart } from "react-icons/fa";
 import { FaCartShopping } from "react-icons/fa6";
 import { authContext } from "@/context/AuthContext/AuthContext";
 import { CiLogin } from "react-icons/ci";
@@ -51,12 +50,6 @@ export default function NavBar() {
             {/* wisthlist   */}
             {token && (
               <>
-                <FaHeart
-                  className="text-2xl cursor-pointer"
-                  onClick={() => {
-                    router.push("/wishlist");
-                  }}
-                />
                 <FaCartShopping
                   className="text-2xl cursor-pointer"
                   onClick={() => {
@@ -93,7 +86,7 @@ export default function NavBar() {
             } md:h-auto `}
             id="navbar-sticky"
           >
-            <ul className="flex flex-col md:p-0 md:text-[0.9rem] xl:text-2xl mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-1 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white  ">
+            <ul className="flex flex-col md:p-0 md:text-[0.9rem] xl:text-xl mt-4 font-medium border border-gray-100 rounded-lg bg-gray-50 md:space-x-1 rtl:space-x-reverse md:flex-row md:mt-0 md:border-0 md:bg-white  ">
               <li>
                 <Link
                   href="/"

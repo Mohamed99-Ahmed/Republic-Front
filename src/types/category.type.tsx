@@ -1,25 +1,28 @@
 interface productType {
-    createdAt:string,
-    _id: string,
-    name: string,
-    id: number,
-    price: number | {
+  createdAt?: string;
+  _id: string;
+  name?: string;
+  id?: number;
+  price?:
+    | number
+    | {
         single: number;
         double: number;
-    },
-    imageCover: string,
-    description: string
+      };
+  imageCover?: string;
+  description?: string;
+  category?: string;
 }
 
-interface categoryType   {
-    createdAt: string,
-    _id: string,
-    categoryName: string,
-     countProducts: number,
-     products: productType[],
-    id: string,
+interface categoryType {
+  createdAt: string;
+  _id: string;
+  categoryName: string;
+  countProducts: number;
+  products: productType[];
+  id: string;
 }
- type categoriesType = categoryType[];
- export default categoryType
+type categoriesType = categoryType[];
+export default categoryType;
 // Export the interfaces and type
-export type { productType, categoryType, categoriesType};
+export type { productType, categoryType, categoriesType };

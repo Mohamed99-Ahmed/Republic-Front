@@ -1,8 +1,8 @@
 type storeType = {
-    link : string, 
-    name : string,
-    description : string
-    _id:number
+    link? : string, 
+    name? : string,
+    description? : string
+    _id?:string | undefined,
 }
 type storesType = storeType[];
 

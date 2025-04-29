@@ -2,12 +2,12 @@
 import React, { createContext, ReactNode, useState } from "react";
 import Cookies from "js-cookie";
 import { useRouter } from "next/navigation";
-import { jwtDecode, JwtPayload } from "jwt-decode";
+import { jwtDecode } from "jwt-decode";
 import { payload } from "@/types/auth";
 
 interface AuthContextType {
   token: string | undefined;
-  payload: string | JwtPayload | null;
+  payload: payload | null;
   logOut: () => void;
   logIn: () => void;
   putTokenCookie: (token:string) => void;
@@ -15,7 +15,7 @@ interface AuthContextType {
 
 export const authContext = createContext<AuthContextType>({
   token: undefined,
-  payload: null,
+  payload: null ,
   logOut: () => {},
   logIn: () => {},
   putTokenCookie: () => {},
@@ -24,7 +24,7 @@ export const authContext = createContext<AuthContextType>({
 export default function AuthContext({ children }: { children: ReactNode }) {
   const router = useRouter();
   const [token, setToken] = useState<string | undefined>(Cookies.get("token"));
-  let payload: payload ;
+  let payload = null;
   if (token) {
     payload = jwtDecode(token);
   }

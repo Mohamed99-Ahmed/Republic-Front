@@ -19,7 +19,7 @@ function Button({ type, text, className, ariaLabel, onClick }) {
         children: text
     }, void 0, false, {
         fileName: "[project]/src/components/Button/Button.tsx",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }
