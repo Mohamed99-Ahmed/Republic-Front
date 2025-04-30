@@ -28,7 +28,7 @@ export default function InputField({
       onBlur={onBlur}
       onChange={onChange}
       placeholder={placeholder}
-      className={`text-sColor focus:outline-sColor font-bold  p-2 max-w-[110px] sm:max-w-full  ${className}`}
+      className={`text-sColor focus:outline-sColor font-bold  p-2 max-w-[135px] input-change  ${className}`}
     />
   );
 }

@@ -9,17 +9,18 @@ export default function Orders() {
   // get all orders when page load
   useEffect(() => {
     getMyOrders();
+
   }, []);
   // if change orderes rerender component
-  useEffect(() => {}, [userOrders]);
+  useEffect(() => {    }, [userOrders]);
   return (
     <div className="grid   gap-12">
       {userOrders ? (
         userOrders
           .map((order) => {
             return <OrderShape myOrder={true} key={order._id} order={order} />;
-          })
-          .reverse()
+          }).reverse() // reverse order to show the latest order first
+
       ) : (
         <div className="border border-sColor p-8 ">
           لا يوجد اوردرات

@@ -6,4 +6,10 @@
   section{
     margin-block:5em;
   }
+  @media (min-width: 350px) {
+    .input-change{
+      flex-grow:1;
+      max-width: 100%;
+    }
+  }
 }

@@ -116,7 +116,7 @@ export default function ControleProduct({ product, category }: propsType) {
         </figure>
       )}
       {/* name of product */}
-      <p className="flex flex-wrap items-start  gap-2">
+      <p className="flex items-center  gap-2">
         <label htmlFor="name">اسم المنتج :</label>
         <InputField
           id="name"
@@ -155,7 +155,7 @@ export default function ControleProduct({ product, category }: propsType) {
         </header>
       )}
       {/* price */}
-      <p className="flex   ">
+      <p className="flex  items-center gap-1">
         <span>السعر:</span>
         {typeof product?.price === "object" || manySize ? (
           <div dir="ltr" className="space-y-1">

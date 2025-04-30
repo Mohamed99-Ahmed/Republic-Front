@@ -20,7 +20,7 @@ export default function Orders() {
         {orders ? (
           orders.map((order) => {
             return <OrderShape key={order._id} order={order} />;
-          })
+          }).reverse() // reverse order to show the latest order first
         ) : (
           <div className="border border-sColor p-8 ">
             لا يوجد اوردرات
