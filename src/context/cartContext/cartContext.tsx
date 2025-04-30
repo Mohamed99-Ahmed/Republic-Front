@@ -89,6 +89,7 @@ export default function CartContext({ children }: { children: ReactNode }) {
       }
     } catch (err) {
       console.log(err);
+      toast.error(err.response.data.message);
     }
   }
   // remove product from cart function

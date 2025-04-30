@@ -44,6 +44,7 @@ export interface User {
     items: Item[];
     totalPrice: number;
     __v: number;
+    description?: string;
   }
   export interface OrderType {
     _id: string;
@@ -57,5 +58,6 @@ export interface User {
     price: number | null;
     id: string;
     paid:boolean
+  
   }
   

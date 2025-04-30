@@ -1,8 +1,7 @@
 "use client";
 import Image from "next/image";
 import React, { useContext, useState } from "react";
-import { IoIosExpand } from "react-icons/io";
-import { FaHeart } from "react-icons/fa";
+
 import Button from "../Button/Button";
 import { productType } from "../../types/category.type";
 import { BiDish } from "react-icons/bi";
@@ -98,6 +97,7 @@ export default function ProductItem({ product }: propsType) {
                 setChoice={setChoice}
                 size={size}
                 choice={choice}
+                productId={product._id}
               />
             ) : (
               <SizeAndCoice
@@ -106,6 +106,7 @@ export default function ProductItem({ product }: propsType) {
                 setChoice={setChoice}
                 size={size}
                 choice={choice}
+                productId={product._id}
               />
             )}
           </div>
@@ -158,10 +159,6 @@ export default function ProductItem({ product }: propsType) {
               />
             </>
           )}
-
-          <div className="absLayer absolute top-2 -right-8  group-hover/parent:right-2 transition-[right] duration-1000  flex flex-col gap-4">
-            <IoIosExpand className="text-3xl text-gray-700 font-bold cursor-pointer" />
-          </div>
         </figure>
       </>
     )

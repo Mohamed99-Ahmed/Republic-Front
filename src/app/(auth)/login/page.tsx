@@ -1,12 +1,11 @@
 "use client";
 import { useFormik } from "formik";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import * as yup from "yup";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
 import { Kufam } from "next/font/google";
-import { useRouter } from "next/navigation";
-import useAxios from "@/Hooks/useAxios";
+
 import { loginType } from "../../../types/auth";
 import { authContext } from "@/context/AuthContext/AuthContext";
 const passReg =
@@ -16,15 +15,8 @@ const kufam = Kufam({
   weight: ["400", "700"], // Add weights as needed
 });
 export default function Login() {
-  const navigate = useRouter();
-  const { putTokenCookie } = useContext(authContext);
-  const { axiosConfig, setAxios, responseData } = useAxios({
-    run: false,
-    url: "https://backend-three-nu-89.vercel.app/users/login",
-    method: "POST",
-    toastLoading: "جاري تسجيل الدخول",
-    toastSuccess: " تم تسجيل دخولك",
-  });
+  const { logIn } = useContext(authContext);
+
   const validationSchema = yup.object({
     email: yup
       .string()
@@ -38,22 +30,11 @@ export default function Login() {
         "يجب أن تحتوي كلمة المرور على حرف كبير وصغير ورقم ورمز خاص على الأقل، وأن تكون 8 أحرف أو أكثر"
       ),
   });
-  // submit Func
   // submit funciton
   async function login(values: loginType) {
-    setAxios({
-      ...axiosConfig,
-      data: values,
-      run: true,
-    });
-    console.log(responseData);
+    logIn(values) 
   }
-  useEffect(() => {
-    if (responseData) {
-      navigate.push("./");
-      putTokenCookie(responseData.token);
-    }
-  }, [responseData, navigate, putTokenCookie]);
+  // formik 
   const formik = useFormik({
     initialValues: {
       email: "",

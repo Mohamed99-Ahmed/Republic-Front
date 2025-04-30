@@ -1,13 +1,10 @@
 "use client";
 import { useFormik } from "formik";
-import React, { useContext, useEffect } from "react";
+import React, { useContext } from "react";
 import * as yup from "yup";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
 import { Kufam } from "next/font/google";
-import { useRouter } from "next/navigation";
-import useAxios from "@/Hooks/useAxios";
-import { resetPasswordType } from "../../../types/auth";
 import { authContext } from "@/context/AuthContext/AuthContext";
 const passReg =
   /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$/;
@@ -16,14 +13,9 @@ const kufam = Kufam({
   weight: ["400", "700"], // Add weights as needed
 });
 export default function Login() {
-  const navigate = useRouter();
-  const { putTokenCookie } = useContext(authContext);
-  const { axiosConfig, setAxios, responseData } = useAxios({
-    run: false,
-    method: "PATCH",
-    toastLoading: "جاري اعادة تغيير كلمة المرور",
-    toastSuccess: "تم تغيير كلمة",
-  });
+  // const navigate = useRouter();
+  const {resetPassword} = useContext(authContext);
+  // vlaidation by yup
   const validationSchema = yup.object({
     password: yup
       .string()
@@ -40,34 +32,19 @@ export default function Login() {
         "كلمة المرور غير متطابقة مع اعادة كلمة المرور"
       ),
   });
-  // submit Func
-  // submit funciton
-  async function login(values: resetPasswordType) {
-    setAxios({
-      ...axiosConfig,
-      url: `https://backend-three-nu-89.vercel.app/users/resetPassword/${values.token}`,
-      data: values,
-      run: true,
-    });
-    console.log(responseData);
-  }
-  useEffect(() => {
-    if (responseData) {
-      navigate.push("./login");
-      putTokenCookie(responseData.token);
-    }
-  }, [responseData, navigate, putTokenCookie]);
+
+
+  // formik
   const formik = useFormik({
     initialValues: {
       password: "",
       rePassword: "",
       token: "",
     },
-    onSubmit: async (values) => {
-      await login(values);
-      //  gotoHome();
-    },
     validationSchema,
+    onSubmit: async (values) => {
+      resetPassword(values);
+    },
   });
   return (
     <section>
@@ -133,7 +110,7 @@ export default function Login() {
           <div className="relative">
             <div className="relative z-0">
               <input
-                type="rePassword"
+                type="password"
                 id="rePassword"
                 name="rePassword"
                 value={formik.values.rePassword}

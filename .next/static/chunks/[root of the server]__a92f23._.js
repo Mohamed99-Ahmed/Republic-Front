@@ -165,7 +165,7 @@ const passReg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$
 function Login() {
     _s();
     const navigate = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    const { putTokenCookie } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["authContext"]);
+    const { putTokenCookie, logIn } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["authContext"]);
     const { axiosConfig, setAxios, responseData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Hooks$2f$useAxios$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])({
         run: false,
         url: "https://backend-three-nu-89.vercel.app/users/login",
@@ -410,7 +410,7 @@ function Login() {
         columnNumber: 5
     }, this);
 }
-_s(Login, "EQ6+wfPc31dDqoxVlmZSgdwATI4=", false, function() {
+_s(Login, "MPbqWfpVnmfecWWk3L69EsD2swc=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Hooks$2f$useAxios$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],

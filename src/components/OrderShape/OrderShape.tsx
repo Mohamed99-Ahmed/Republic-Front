@@ -32,8 +32,17 @@ export default function OrderShape({ order, myOrder }: propsType) {
                 </span>
               </h2>
               <p className="createdAt text-gray-600">
-                {/* {order.createdAt.split("").slice(0, 10).join("")} */}
-                {new Date(order.createdAt).toLocaleDateString("ar-EG")}
+                {/* order created at with nice shape to arabic with time */}
+                {new Date(order.createdAt).toLocaleString("ar-EG", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric",
+                  hour: "numeric",
+                  minute: "numeric",
+                  second: "numeric",
+                  hour12: true,
+                })}
               </p>
             </div>
             <div className="flex  gap-3 self-end md:self-center ">
@@ -46,11 +55,17 @@ export default function OrderShape({ order, myOrder }: propsType) {
           </header>
           <main className="grid md:grid-cols-3  lg:grid-cols-4 gap-4">
             {order.cart &&
-            // products
+              // products
               order.cartCopy.items.map((item) => {
                 return <ItemOrder key={item._id} item={item} />;
               })}
           </main>
+          {/* notes of order */}
+          {/* {
+            <p className="description pt-4 capitalize text-sColor font-semibold border-t border-gray-500">
+              {order.cartCopy.description || "لا يوجد ملاحظات"}
+            </p>
+          } */}
           <footer className="border-t flex  flex-wrap gap-4 flex-col md:flex-row justify-between items-center pt-4 border-gray-500 text-nowrap ">
             {/* total price  */}
             <h3 className="text-lg font-medium capitalize">

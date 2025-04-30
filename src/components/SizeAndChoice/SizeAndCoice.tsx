@@ -6,13 +6,15 @@ type propsType = {
   setChoice?: React.Dispatch<React.SetStateAction<string>>;
   size: string;
   choice: string;
+  productId?: string;
 };
 export default function SizeAndCoice({
   oneSize,
   setSize,
   setChoice,
   size,
-  choice
+  choice,
+  productId,
 }: propsType) {
   return (
     <main className="space-y-2">
@@ -30,13 +32,12 @@ export default function SizeAndCoice({
             >
               <input
                 type="radio"
-                name="size"
-                value="single"
+                name={`size-${productId}`}
+                value={`single-${productId}`}
                 checked={size === "single"}
-         
                 className="h-5  w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
               />
-              <label htmlFor="single" className="text-lg">
+              <label htmlFor={`single-${productId}`} className="text-lg">
                 single
               </label>
             </div>
@@ -50,12 +51,12 @@ export default function SizeAndCoice({
             >
               <input
                 type="radio"
-                name="size"
-                id="double"
+                name={`size-${productId}`}
+                id={`double-${productId}`}
                 checked={size === "double"}
                 className="h-5 w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
               />
-              <label htmlFor="double" className="text-lg">
+              <label htmlFor={`double-${productId}`} className="text-lg">
                 double
               </label>
             </div>
@@ -75,12 +76,12 @@ export default function SizeAndCoice({
           >
             <input
               type="radio"
-              name="choice"
-              id="regualr"
+              name={`choice-${productId}`}
+              id={`regular-${productId}`}
               checked={choice === "regualr"}
               className="h-5 w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
             />
-            <label htmlFor="regualr" className="text-lg">
+            <label htmlFor={`regular-${productId}`} className="text-lg">
               regualr
             </label>
           </div>
@@ -94,12 +95,12 @@ export default function SizeAndCoice({
           >
             <input
               type="radio"
-              name="choice"
-              id="spicy"
-              checked = {choice === "spicy"}
+              name={`choice-${productId}`}
+              id={`spicy-${productId}`}
+              checked={choice === "spicy"}
               className="h-5 w-5 cursor-pointer appearance-none border-2 border-sColor rounded-full checked:bg-sColor checked:border-transparent transition-all duration-300 ease-in-out focus:ring-2 focus:ring-sColor"
             />
-            <label htmlFor="spicy" className="text-lg">
+            <label htmlFor={`spicy-${productId}`} className="text-lg">
               spicy
             </label>
           </div>

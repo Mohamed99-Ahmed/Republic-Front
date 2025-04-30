@@ -8,7 +8,6 @@ type propsType = {
 };
 
 export default function CategoryMeal({ category }: propsType) {
-  console.log("products", category);
   return (
     <>
       <div className="container">

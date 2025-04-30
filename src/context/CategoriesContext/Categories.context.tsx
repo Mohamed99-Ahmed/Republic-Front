@@ -1,9 +1,10 @@
 import React, { ReactNode, useContext, useState } from "react";
-import { createContext } from "react"; // ✅ صح
+import { createContext } from "react";
 import { authContext } from "../AuthContext/AuthContext";
 import categoryType, { productType } from "@/types/category.type";
 import axios from "axios";
 import toast from "react-hot-toast";
+
 
 interface CateogryContextType {
   updateCategory: (id: string, categoryName: string) => Promise<void>;
@@ -11,8 +12,8 @@ interface CateogryContextType {
   getAllCategories: () => Promise<void>;
   createCategory: (categoryName: string) => Promise<void>;
   removeProduct: (id: string) => Promise<void>;
-  updateProduct: (id: string, bodyData: productType, formData?:FormData) => Promise<void>;
-  createProduct: ( bodyData: productType) => Promise<void>;
+  updateProduct: (id: string, bodyData: productType, formData?: FormData) => Promise<void>;
+  createProduct: (bodyData: handleProductType) => Promise<void>;
   categories: categoryType[] | null;
 }
 
@@ -20,8 +21,9 @@ type handleProductType = {
   name: string;
   price: number | { single: number; double: number };
   description: string;
-  category:string
-}
+  category: string;
+};
+
 export const CateogryContext = createContext<CateogryContextType>({
   updateCategory: async () => {},
   removeCategory: async () => {},
@@ -32,44 +34,34 @@ export const CateogryContext = createContext<CateogryContextType>({
   createProduct: async () => {},
   categories: null,
 });
+
 export default function CateogryContextSupply({
   children,
 }: {
   children: ReactNode;
 }) {
-  
-  const { token } = useContext(authContext); // getCheckout on stripe
-  const [categories, setCategories] = useState(null);
-  // get all categories function
+  const { token } = useContext(authContext);
+  const [categories, setCategories] = useState<categoryType[] | null>(null);
+
   async function getAllCategories() {
     try {
-      const options = {
-        url: "https://backend-three-nu-89.vercel.app/categories",
-        method: "GET",
-      };
-      const { data } = await axios.request(options);
-      console.log(data.data.data);
+      const { data } = await axios.get("https://backend-three-nu-89.vercel.app/categories");
       setCategories(data.data.data);
     } catch (err) {
       console.log(err);
     }
   }
-  // create Category function
 
   async function createCategory(categoryName: string) {
     const loadingToast = toast.loading("جاري انشاء الفئة");
     try {
-      const options = {
-        url: "https://backend-three-nu-89.vercel.app/categories",
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data: {
-          categoryName,
-        },
-      };
-      const { data } = await axios.request(options);
+      const { data } = await axios.post(
+        "https://backend-three-nu-89.vercel.app/categories",
+        { categoryName },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       if (data.status === "success") {
         toast.dismiss(loadingToast);
         toast.success("تم انشاء الفئة بنجاح");
@@ -80,47 +72,42 @@ export default function CateogryContextSupply({
       toast.dismiss(loadingToast);
     }
   }
-  // udpate specific category function
+
   async function updateCategory(id: string, categoryName: string) {
-    const loadingToast = toast.loading("جاري تعديل المنتج");
+    const loadingToast = toast.loading("جاري تعديل الفئة");
     try {
-      const options = {
-        url: `https://backend-three-nu-89.vercel.app/categories/${id}`,
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data: {
-          categoryName,
-        },
-      };
-      const { data } = await axios.request(options);
+      const { data } = await axios.patch(
+        `https://backend-three-nu-89.vercel.app/categories/${id}`,
+        { categoryName },
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       if (data.status === "success") {
         toast.dismiss(loadingToast);
-        toast.success("تم تعديل المنتج بنجاح");
+        toast.success("تم تعديل الفئة بنجاح");
         getAllCategories();
       }
-    } catch (err ) {
+    } catch (err: any) {
       console.log(err);
       toast.dismiss(loadingToast);
-      toast.error( err.response.data.message);    
+      toast.error(err?.response?.data?.message || "حدث خطأ");
+    }
   }
-  //   REMOVE category function
+
   async function removeCategory(id: string) {
     const loadingToast = toast.loading("جاري مسح الفئة");
     try {
-      const options = {
-        url: `https://backend-three-nu-89.vercel.app/categories/${id}`,
-        method: "DELETE",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const { data } = await axios.request(options);
+      const { data } = await axios.delete(
+        `https://backend-three-nu-89.vercel.app/categories/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
       if (data.status === "success") {
         toast.dismiss(loadingToast);
+        toast.success("تم مسح الفئة بنجاح");
         getAllCategories();
-        toast.success("تم مسح بنجاح");
       }
     } catch (err) {
       console.log(err);
@@ -128,90 +115,39 @@ export default function CateogryContextSupply({
     }
   }
 
-  // function to handle image upload
-  function handleImageUpload(bodyData: handleProductType, formData?: FormData) {
+  function handleImageUpload(bodyData: handleProductType, formData?: FormData): FormData {
     const data = new FormData();
-    
-    // Add all bodyData fields to FormData
-    Object.keys(bodyData).forEach(key => {
-      data.append(key, bodyData[key]);
+
+    Object.keys(bodyData).forEach((key) => {
+      if (key === "price" && typeof bodyData.price === "object") {
+        data.append("single", bodyData.price.single.toString());
+        data.append("double", bodyData.price.double.toString());
+      } else {
+        data.append(key, (bodyData as any)[key].toString());
+      }
     });
-    
-    // Add image if formData is provided
+
     if (formData) {
-      for (const [key, value] of formData.entries()) {
-        data.append(key, value);
+      const image = formData.get("imageCover");
+      if (image) {
+        data.append("imageCover", image);
       }
     }
-    
+
     return data;
   }
-  
-  async function updateProduct(id: string, bodyData: handleProductType, formData?: FormData) {
-    const loadingToast = toast.loading("جاري تعديل المنتج");
-    try {
-      const data = handleImageUpload(bodyData, formData);
-  
-      const options = {
-        url: `https://backend-three-nu-89.vercel.app/products/${id}`,
-        method: "PATCH",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data
-      };
-  
-      const { data: response } = await axios.request(options);
-      if (response.status === "success") {
-        toast.dismiss(loadingToast);
-        toast.success("تم تعديل المنتج بنجاح");
-        getAllCategories();
-      }
-    } catch (err) {
-      console.log(err);
-      toast.dismiss(loadingToast);
-      toast.error(err.response?.data?.message || "حدث خطأ أثناء تعديل المنتج");
-    }
-  }
-  //   REMOVE product fst);
-        console.log("reupnseDana", dataction
-  async function removeProduct(id: string) {
-    consconsole.log("formDttl", formDaaa);
-   d    ingToast = toast.loading("جاري حذف الفئة");
-    try {
-      const options = {
-        url: `https://backeders: {
-          Authorization: `Bearer ${token}`,
-        },
-      };
-      const { data } = await axios.request(options);
-      if (data.status === "success") {
-        toast.dismiss(loadingToast);
-        toast.success("تم مسح بنجاح");
-        getAllCategories();
-      }
-    } catch (err) {
-      console.log(err);
-      toast.dismiss(loadingToast);
-    }
-  }
-  //  CREATE product function
-  async function createProduct(
-    bodyData: handleProductType,
-  ) {
-    const loadingToast = toast.loading("جاري انشاء المنتج");
-   
 
+  async function createProduct(bodyData: handleProductType) {
+    const loadingToast = toast.loading("جاري انشاء المنتج");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/products`,
+        url : "https://backend-three-nu-89.vercel.app/products",
         method: "POST",
-        headers: {
-          Authorization: `Bearer ${token}`,
-        },
-        data:bodyData
-      };
+        headers: {  Authorization: `Bearer ${token}` },
+        data: bodyData,
+      }
       const { data } = await axios.request(options);
+
       if (data.status === "success") {
         toast.dismiss(loadingToast);
         toast.success("تم انشاء المنتج بنجاح");
@@ -220,9 +156,52 @@ export default function CateogryContextSupply({
     } catch (err) {
       console.log(err);
       toast.dismiss(loadingToast);
-      // toast.error(err);
     }
   }
+
+  async function removeProduct(id: string) {
+    const loadingToast = toast.loading("جاري حذف المنتج");
+    try {
+      const { data } = await axios.delete(
+        `https://backend-three-nu-89.vercel.app/products/${id}`,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
+      if (data.status === "success") {
+        toast.dismiss(loadingToast);
+        toast.success("تم حذف المنتج بنجاح");
+        getAllCategories();
+      }
+    } catch (err) {
+      console.log(err);
+      toast.dismiss(loadingToast);
+    }
+  }
+
+  async function updateProduct(id: string, bodyData: handleProductType, formData?: FormData) {
+    const loadingToast = toast.loading("جاري تعديل المنتج");
+    try {
+      const dataToSend = formData ? handleImageUpload(bodyData, formData) : bodyData;
+      const options = {
+        url : `https://backend-three-nu-89.vercel.app/products/${id}`,
+        method: "PATCH",
+        headers: {  Authorization: `Bearer ${token}` },
+        data: dataToSend,
+      } 
+      const { data } = await axios.request(options);
+
+      if (data.status === "success") {
+        toast.dismiss(loadingToast);
+        toast.success("تم تعديل المنتج بنجاح");
+        getAllCategories();
+      }
+    } catch (err) {
+      console.log(err);
+      toast.dismiss(loadingToast);
+    }
+  }
+
   return (
     <CateogryContext.Provider
       value={{
@@ -239,5 +218,4 @@ export default function CateogryContextSupply({
       {children}
     </CateogryContext.Provider>
   );
-}
 }

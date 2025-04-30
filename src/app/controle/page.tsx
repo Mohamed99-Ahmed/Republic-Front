@@ -77,7 +77,7 @@ export default function ControleProducts() {
         categories
           .map((category) => {
             return <ControleCategory category={category} key={category.id} />;
-          })
+          }).reverse()
           }
     </div>
   );

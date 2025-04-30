@@ -1,14 +1,13 @@
 "use client";
 import { useFormik } from "formik";
-import React from "react";
+import React, { useContext } from "react";
 import * as yup from "yup";
 import { FaPhoneAlt } from "react-icons/fa";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
 import { Kufam } from "next/font/google";
-import useAxios from "@/Hooks/useAxios";
-import { submitType } from "../../../types/auth";
-import { useRouter } from "next/navigation";
+import { submitType } from "../../../types/auth";;
+import { authContext } from "@/context/AuthContext/AuthContext";
 
 const phoneReg = /^(2)01[0125][0-9]{8}$/gm;
 const passReg =
@@ -19,27 +18,18 @@ const kufam = Kufam({
 });
 
 export default function SignUp() {
-  const navigate = useRouter();
-  const { axiosConfig, setAxios, responseData } = useAxios({
-    run: false,
-    url: "https://backend-three-nu-89.vercel.app/users/signup",
-    method: "POST",
-    toastLoading: "جاري انشاء الحساب",
-    toastSuccess: "مبروك تم انشاء حسابك",
-  });
+  const {signUp} = useContext(authContext);
+  //   run: false,
+  //   url: "https://backend-three-nu-89.vercel.app/users/signup",
+  //   method: "POST",
+  //   toastLoading: "جاري انشاء الحساب",
+  //   toastSuccess: "مبروك تم انشاء حسابك",
+  // });
   // submit funciton
   async function submitFunc(values: submitType) {
-    setAxios({
-      ...axiosConfig,
-      data: values,
-      run: true,
-    });
-    if (responseData) {
-      setTimeout(() => {
-        console.log("lkjfalsjdfkj gooooooooo", responseData);
-        navigate.push("./login");
-      }, 3000);
-    }
+
+    signUp(values)
+    
   }
   // validate by Yup
   const validate = yup.object({
@@ -180,7 +170,7 @@ export default function SignUp() {
           <div className="relative">
             <div className="relative z-0">
               <input
-                type="rePassword"
+                type="password"
                 id="rePassword"
                 name="rePassword"
                 value={formik.values.rePassword}

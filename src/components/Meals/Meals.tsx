@@ -18,7 +18,7 @@ export default async function Meals() {
     }
   }
   const categories = await getAllCategories();
-  
+
   return (
     <main className="space-y-20 mt-20">
       {categories?.map((category: categoryType) => {

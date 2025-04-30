@@ -9,7 +9,7 @@ export default function ControleAside() {
   const path = usePathname();
   const [openToggle, setOpenToggle] = useState<boolean>(false);
   return (
-    <div className="fixed z-30 top-[88px]  lg:mt-16 lg:text-xl bg-mColor lg:top-0 left-0 right-0 lg:left-auto  lg:border-r-4 lg:border-r-slate-500">
+    <div className="fixed z-30 top-[130px]  lg:mt-16 lg:text-xl bg-mColor lg:top-0 left-0 right-0 lg:left-auto  lg:border-r-4 lg:border-r-slate-500">
       <div className="container pt-4">
         {/* start toggle NavBar */}
         <div

@@ -44,12 +44,14 @@ export default function Cart() {
                   {mycart.items.map((item) => {
                     return <CartProduct productCart={item} key={item._id} />;
                   })}
-                  <textarea
+                  {/* add notes to order */}
+                  {/* <textarea
                     name="ملاحظات"
                     id=""
+                 
                     placeholder="اكتب هنا ملاحظاتك"
                     className="w-full h-20 p-3 text-right text-gray-700 border-2 border-gray-300 rounded-lg focus:outline-none focus:ring-1 focus:ring-sColor focus:border-sColor placeholder-gray-400 shadow-sm transition-all duration-300 ease-in-out resize-none"
-                  ></textarea>
+                  ></textarea> */}
                   <button
                     onClick={() => clearCart()}
                     className="clear mt-4 text-center cursor-pointer"
@@ -78,7 +80,7 @@ export default function Cart() {
                       </dl>
                     </div>
                     <form onSubmit={(e) => handlePayment(e)}>
-                      <header className="flex items-center justify-between gap-4">
+                      <header className="flex items-center mb-4 justify-between gap-4">
                         <input
                           type="radio"
                           name="payment"

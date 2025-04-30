@@ -1,13 +1,12 @@
 "use client";
 import { useFormik } from "formik";
-import React, { useEffect } from "react";
+import React, { useContext  } from "react";
 import * as yup from "yup";
 import Button from "@/components/Button/Button";
 import Link from "next/link";
 import { Kufam } from "next/font/google";
-import { useRouter } from "next/navigation";
-import useAxios from "@/Hooks/useAxios";
-import { forgetPasswordType } from "../../../types/auth";
+
+import { authContext } from "@/context/AuthContext/AuthContext";
 
 
 const kufam = Kufam({
@@ -16,40 +15,27 @@ const kufam = Kufam({
 });
 
 export default function Login() {
-  const navigate = useRouter();
-  const { axiosConfig, setAxios, responseData } = useAxios({
-    run: false,
-    url: "https://backend-three-nu-89.vercel.app/users/forgetPassword",
-    method: "POST",
-    toastLoading: "جاري تحميل بيناتك",
-    toastSuccess: " تم ارسال كود الي الايميل",
-  });
+  const {forgetPassword} = useContext(authContext);
+  
+  //   run: false,
+  //   url: "https://backend-three-nu-89.vercel.app/users/forgetPassword",
+  //   method: "POST",
+  //   toastLoading: "جاري تحميل بيناتك",
+  //   toastSuccess: " تم ارسال كود الي الايميل",
+  // });
   const validationSchema = yup.object({
     email: yup
       .string()
       .required("يجب كتابة البريد الالكتروني")
       .email("البريد الالكتروني غير صحيح"),
   });
-  // forgitPassword funciton
-  async function forgetPass(values: forgetPasswordType) {
-    setAxios({
-      ...axiosConfig,
-      data: values,
-      run: true,
-    });
-  }
-  useEffect(() => {
-    console.log(responseData);
-    if (responseData) {
-      navigate.push("./resetPassword");
-    }
-  }, [responseData, navigate]);
+
   const formik = useFormik({
     initialValues: {
       email: "",
     },
     onSubmit: async (values) => {
-      await forgetPass(values);
+      forgetPassword(values)
     },
     validationSchema,
   });

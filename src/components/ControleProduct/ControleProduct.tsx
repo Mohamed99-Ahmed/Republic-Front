@@ -43,28 +43,24 @@ export default function ControleProduct({ product, category }: propsType) {
       };
       if (product) {
         if (isUpdate) {
-          if(imageCover) {
+          if (imageCover) {
             // if the user add new product and he upload image cover
             const formData = new FormData();
             formData.append("imageCover", imageCover);
             console.log("formData", formData);
             updateProduct(product._id, newdProduct, formData);
-          }
-          else{
+          } else {
             updateProduct(product._id, newdProduct);
           }
         } else {
           removeProduct(product._id);
         }
       } else {
-       
-          createProduct(newdProduct);
-        
+        createProduct(newdProduct);
       }
     },
   });
   if (product) {
-
   }
   // handle image of product
   const handleImageCover = function () {
@@ -79,37 +75,48 @@ export default function ControleProduct({ product, category }: propsType) {
   return (
     <form
       onSubmit={formik.handleSubmit}
-      className="product  bg-white p-4 rounded-md hover:border hover:border-sColor flex flex-col gap-2"
+      className="product  bg-white p-4   rounded-md hover:border hover:border-sColor flex flex-col gap-2"
     >
-      {/* photo */}
-      <figure className="relative group/parent overflow-hidden ">
-     { !imageCover?  <Image
-          src={handleImageCover()}
-          className="w-full object-contain h-[300px]"
-          height={100}
-          width={100}
-          alt={product?.description || "img description"}
-        ></Image> : <Image src={URL.createObjectURL(imageCover)} height={100} width={100}  alt="Preview" className="w-full object-contain h-[300px]" />}
-        <div className=" layer  absolute top-0 left-0 w-full h-full bg-black opacity-0 group-hover/parent:opacity-50 flex items-center justify-center transition-all duration-300 ease-in-out">
-
-          <input
-            type="file"
-            accept="image/*"
-            className="w-full h-full opacity-0 cursor-pointer"
-            onChange={(e) => {
-              if (e.target.files) {
-                setImageCover(e.target.files[0]);
-              }
-            }}
-          ></input>
-          <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  text-8xl text-gray-600 font-bold">
-            {" "}
-            +{" "}
-          </span>
-        </div>
-      </figure>
+      {/* photo {if product appear or not so no appear} */}
+      {product && (
+        <figure className="relative  group/parent overflow-hidden ">
+          {!imageCover ? (
+            <Image
+              src={handleImageCover()}
+              className="w-full object-contain h-[300px]"
+              height={100}
+              width={100}
+              alt={product?.description || "img description"}
+            ></Image>
+          ) : (
+            <Image
+              src={URL.createObjectURL(imageCover)}
+              height={100}
+              width={100}
+              alt="Preview"
+              className="w-full object-cover h-[300px]"
+            />
+          )}
+          <div className=" layer  absolute top-0 left-0 w-full h-full bg-black opacity-0 group-hover/parent:opacity-50 flex items-center justify-center transition-all duration-300 ease-in-out">
+            <input
+              type="file"
+              accept="image/*"
+              className="w-full h-full opacity-0 cursor-pointer"
+              onChange={(e) => {
+                if (e.target.files) {
+                  setImageCover(e.target.files[0]);
+                }
+              }}
+            ></input>
+            <span className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2  text-8xl text-gray-600 font-bold">
+              {" "}
+              +{" "}
+            </span>
+          </div>
+        </figure>
+      )}
       {/* name of product */}
-      <p className="flex items-center gap-2">
+      <p className="flex flex-wrap items-start  gap-2">
         <label htmlFor="name">اسم المنتج :</label>
         <InputField
           id="name"
@@ -119,7 +126,7 @@ export default function ControleProduct({ product, category }: propsType) {
           value={formik.values.name}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          className=" bg-white grow rounded-md text-lg font-semibold capitalize text-center"
+          className=" bg-white p-0  max-w-[100px] sm:max-w-full  rounded-md text-lg font-semibold capitalize text-center"
         />
       </p>
       {/* if  add new product add this field this ask admin many of size of only one size */}
@@ -148,11 +155,11 @@ export default function ControleProduct({ product, category }: propsType) {
         </header>
       )}
       {/* price */}
-      <p className="flex gap-2 justify-between">
+      <p className="flex   ">
         <span>السعر:</span>
         {typeof product?.price === "object" || manySize ? (
           <div dir="ltr" className="space-y-1">
-            <p className="flex justify-between items-center gap-4">
+            <p className="flex justify-between  items-center gap-x-1">
               <label
                 className="capitalize whitespace-nowrap"
                 htmlFor="priceSingle"
@@ -170,7 +177,7 @@ export default function ControleProduct({ product, category }: propsType) {
                 className=" grow"
               />
             </p>
-            <p className="flex justify-between items-center gap-4">
+            <p className="flex justify-between  items-center gap-x-1">
               <label
                 className="capitalize whitespace-nowrap"
                 htmlFor="priceDouble"
@@ -185,12 +192,12 @@ export default function ControleProduct({ product, category }: propsType) {
                 value={formik.values.priceDouble || ""}
                 onBlur={formik.handleBlur}
                 onChange={formik.handleChange}
-                className=" grow"
+                className=" "
               />
             </p>
           </div>
         ) : (
-          <span className="  text-center text-sColor font-semibold grow ">
+          <span className="  text-center text-sColor font-semibold  ">
             {" "}
             <InputField
               id="price"
@@ -207,7 +214,7 @@ export default function ControleProduct({ product, category }: propsType) {
       </p>
 
       {/* description of product */}
-      <p className="flex items-center gap-2">
+      <p className="flex flex-wrap items-center gap-2 ">
         <label htmlFor="description">الوصف :</label>
         <textarea
           id="description"
@@ -216,7 +223,7 @@ export default function ControleProduct({ product, category }: propsType) {
           value={formik.values.description}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          className=" p-1 bg-white focus:outline-sColor rounded-md grow text-wrap min-h-24 overflow-hidden "
+          className=" p-1 bg-white  focus:outline-sColor rounded-md grow text-wrap min-h-24 overflow-hidden "
         />
       </p>
       {/* buttons */}

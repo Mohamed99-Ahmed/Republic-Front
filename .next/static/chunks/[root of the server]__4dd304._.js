@@ -12,14 +12,14 @@ var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist
 ;
 function Button({ type, text, className, ariaLabel, onClick }) {
     return /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("button", {
-        className: `capitalize  text-xl text-slate-200 px-2 py-2 rounded-full bg-sColor text-center ${className}`,
+        className: `capitalize px-4  text-xl text-slate-200  py-2 rounded-full bg-sColor text-center ${className}`,
         "aria-label": ariaLabel,
         onClick: onClick,
         type: type,
         children: text
     }, void 0, false, {
         fileName: "[project]/src/components/Button/Button.tsx",
-        lineNumber: 11,
+        lineNumber: 12,
         columnNumber: 5
     }, this);
 }
@@ -87,7 +87,8 @@ const useAxios = (initialConfig)=>{
             if (axiosConfig.run) {
                 const fetchData = {
                     "useAxios.useEffect.fetchData": async ()=>{
-                        const loadToast = __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].loading(axiosConfig.toastLoading);
+                        let loadToast;
+                        if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].loading(axiosConfig.toastLoading);
                         setLoading(true);
                         try {
                             const response = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].request({
@@ -96,9 +97,9 @@ const useAxios = (initialConfig)=>{
                                 data: axiosConfig.data,
                                 headers: axiosConfig.headers
                             });
-                            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].dismiss(loadToast);
+                            if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].dismiss(loadToast);
                             setResponseData(response.data);
-                            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(axiosConfig.toastSuccess);
+                            if (axiosConfig.toastLoading) __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].success(axiosConfig.toastSuccess);
                             setErrorMessage("");
                         } catch (err) {
                             __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"].dismiss(loadToast);
@@ -164,7 +165,8 @@ const passReg = /^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{8,}$
 function Login() {
     _s();
     const navigate = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"])();
-    const { putTokenCookie } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["authContext"]);
+    const { resetPassword } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useContext"])(__TURBOPACK__imported__module__$5b$project$5d2f$src$2f$context$2f$AuthContext$2f$AuthContext$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["authContext"]);
+    // const { putTokenCookie } = useContext(authContext);
     const { axiosConfig, setAxios, responseData } = (0, __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Hooks$2f$useAxios$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"])({
         run: false,
         method: "PATCH",
@@ -178,28 +180,23 @@ function Login() {
         ], "كلمة المرور غير متطابقة مع اعادة كلمة المرور")
     });
     // submit Func
-    // submit funciton
-    async function login(values) {
-        setAxios({
-            ...axiosConfig,
-            url: `https://backend-three-nu-89.vercel.app/users/resetPassword/${values.token}`,
-            data: values,
-            run: true
-        });
-        console.log(responseData);
-    }
-    (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$index$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useEffect"])({
-        "Login.useEffect": ()=>{
-            if (responseData) {
-                navigate.push("./login");
-                putTokenCookie(responseData.token);
-            }
-        }
-    }["Login.useEffect"], [
-        responseData,
-        navigate,
-        putTokenCookie
-    ]);
+    // // submit funciton
+    // async function login(values: resetPasswordType) {
+    //   setAxios({
+    //     ...axiosConfig,
+    //     url: `https://backend-three-nu-89.vercel.app/users/resetPassword/${values.token}`,
+    //     data: values,
+    //     run: true,
+    //   });
+    //   console.log(responseData);
+    // }
+    // useEffect(() => {
+    //   if (responseData) {
+    //     navigate.push("./login");
+    //     putTokenCookie(responseData.token);
+    //   }
+    // }, [responseData, navigate, putTokenCookie]);
+    // formik
     const formik = (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$formik$2f$dist$2f$formik$2e$esm$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useFormik"])({
         initialValues: {
             password: "",
@@ -208,8 +205,7 @@ function Login() {
         },
         onSubmit: {
             "Login.useFormik[formik]": async (values)=>{
-                await login(values);
-            //  gotoHome();
+                resetPassword(values);
             }
         }["Login.useFormik[formik]"],
         validationSchema
@@ -226,7 +222,7 @@ function Login() {
                         children: "اعادة تعيين كلمة المرور"
                     }, void 0, false, {
                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                        lineNumber: 79,
+                        lineNumber: 82,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -245,7 +241,7 @@ function Login() {
                                     placeholder: ""
                                 }, void 0, false, {
                                     fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                    lineNumber: 88,
+                                    lineNumber: 91,
                                     columnNumber: 15
                                 }, this),
                                 /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -258,24 +254,24 @@ function Login() {
                                             children: " *"
                                         }, void 0, false, {
                                             fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                            lineNumber: 102,
+                                            lineNumber: 105,
                                             columnNumber: 22
                                         }, this)
                                     ]
                                 }, void 0, true, {
                                     fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                    lineNumber: 98,
+                                    lineNumber: 101,
                                     columnNumber: 15
                                 }, this)
                             ]
                         }, void 0, true, {
                             fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                            lineNumber: 87,
+                            lineNumber: 90,
                             columnNumber: 13
                         }, this)
                     }, void 0, false, {
                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                        lineNumber: 86,
+                        lineNumber: 89,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -295,7 +291,7 @@ function Login() {
                                         placeholder: ""
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                        lineNumber: 109,
+                                        lineNumber: 112,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -308,19 +304,19 @@ function Login() {
                                                 children: " *"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                                lineNumber: 123,
+                                                lineNumber: 126,
                                                 columnNumber: 36
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                        lineNumber: 119,
+                                        lineNumber: 122,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                lineNumber: 108,
+                                lineNumber: 111,
                                 columnNumber: 13
                             }, this),
                             formik.errors.password && formik.touched.password && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -328,13 +324,13 @@ function Login() {
                                 children: formik.errors.password
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                lineNumber: 127,
+                                lineNumber: 130,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                        lineNumber: 107,
+                        lineNumber: 110,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -344,7 +340,7 @@ function Login() {
                                 className: "relative z-0",
                                 children: [
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("input", {
-                                        type: "rePassword",
+                                        type: "password",
                                         id: "rePassword",
                                         name: "rePassword",
                                         value: formik.values.rePassword,
@@ -354,7 +350,7 @@ function Login() {
                                         placeholder: ""
                                     }, void 0, false, {
                                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                        lineNumber: 135,
+                                        lineNumber: 138,
                                         columnNumber: 15
                                     }, this),
                                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("label", {
@@ -367,19 +363,19 @@ function Login() {
                                                 children: " *"
                                             }, void 0, false, {
                                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                                lineNumber: 149,
+                                                lineNumber: 152,
                                                 columnNumber: 33
                                             }, this)
                                         ]
                                     }, void 0, true, {
                                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                        lineNumber: 145,
+                                        lineNumber: 148,
                                         columnNumber: 15
                                     }, this)
                                 ]
                             }, void 0, true, {
                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                lineNumber: 134,
+                                lineNumber: 137,
                                 columnNumber: 13
                             }, this),
                             formik.errors.rePassword && formik.touched.rePassword && /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -387,13 +383,13 @@ function Login() {
                                 children: formik.errors.rePassword
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                lineNumber: 153,
+                                lineNumber: 156,
                                 columnNumber: 15
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                        lineNumber: 133,
+                        lineNumber: 136,
                         columnNumber: 11
                     }, this),
                     /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("div", {
@@ -406,7 +402,7 @@ function Login() {
                                 ariaLabel: "تغيير كلمة المرو"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                lineNumber: 162,
+                                lineNumber: 165,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])("p", {
@@ -414,7 +410,7 @@ function Login() {
                                 children: "او"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                lineNumber: 168,
+                                lineNumber: 171,
                                 columnNumber: 13
                             }, this),
                             /*#__PURE__*/ (0, __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$compiled$2f$react$2f$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["jsxDEV"])(__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$client$2f$app$2d$dir$2f$link$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"], {
@@ -423,33 +419,33 @@ function Login() {
                                 children: "تسجيل الدخول"
                             }, void 0, false, {
                                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                                lineNumber: 169,
+                                lineNumber: 172,
                                 columnNumber: 13
                             }, this)
                         ]
                     }, void 0, true, {
                         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                        lineNumber: 159,
+                        lineNumber: 162,
                         columnNumber: 11
                     }, this)
                 ]
             }, void 0, true, {
                 fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-                lineNumber: 75,
+                lineNumber: 78,
                 columnNumber: 9
             }, this)
         }, void 0, false, {
             fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-            lineNumber: 74,
+            lineNumber: 77,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/(auth)/resetPassword/page.tsx",
-        lineNumber: 73,
+        lineNumber: 76,
         columnNumber: 5
     }, this);
 }
-_s(Login, "EQ6+wfPc31dDqoxVlmZSgdwATI4=", false, function() {
+_s(Login, "0ELVBKqzjEfTXtKv7wec6eD1nPQ=", false, function() {
     return [
         __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$navigation$2e$js__$5b$app$2d$client$5d$__$28$ecmascript$29$__["useRouter"],
         __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$Hooks$2f$useAxios$2e$tsx__$5b$app$2d$client$5d$__$28$ecmascript$29$__["default"],
