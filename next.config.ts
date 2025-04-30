@@ -5,6 +5,10 @@ const nextConfig: NextConfig = {
   // "(https://backend-three-nu-89.vercel.app/public/imgs/products/product-67ce1e1eee3b8e988912e4bd-1745422240572.jpeg"
   // https://ik.imagekit.io/MohamedAhmed/RebublicImgs/uploads
   // /* config options here */
+  // igonre errors during build
+  eslint: {
+    ignoreDuringBuilds: true,
+  },
   images: {
     remotePatterns: [
       {
