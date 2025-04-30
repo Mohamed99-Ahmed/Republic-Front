@@ -5,7 +5,7 @@ import { CartType } from "@/types/responseTypes";
 import axios from "axios";
 import toast from "react-hot-toast";
 type AddProduct = {
-  size:string, productId:string, quantity:number, description? : string,choice:string
+  size?:string, productId:string, quantity:number, description? : string,choice:string
 }
 interface CartContextType {
   addProductToCart: (arg: AddProduct) => Promise<void>;

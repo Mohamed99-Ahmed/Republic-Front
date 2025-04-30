@@ -7,9 +7,10 @@ type propsType = {
 };
 
 export default function ItemOrder({ item }: propsType) {
+  console.log("item",item);
   // handleIamgeCover of product
   const handleImageCover = function () {
-    if (item.product.imageCover) {
+    if (item.product && item.product.imageCover) {
       return item.product.imageCover.startsWith("http")
         ? item.product.imageCover
         : `https://backend-three-nu-89.vercel.app/public/imgs/products/${item.product.imageCover}`;
@@ -18,7 +19,7 @@ export default function ItemOrder({ item }: propsType) {
     }
   };
   console.log(item);
-  return (
+  return ( item.product &&
     <figure className="flex overflow-hidden  relative cursor-pointer group flex-col items-center justify-between  gap-2 p-2 border-gray-500 border-2 border-solid rounded-md">
       <div className="overflow-hidden self-stretch">
         <Image
@@ -29,7 +30,7 @@ export default function ItemOrder({ item }: propsType) {
           alt="img cover"
         />
       </div>
-      <h1 className="capitalize text-lg font-bold line-clamp-2">
+   <h1 className="capitalize text-lg font-bold line-clamp-2">
         {item.product.name}
       </h1>
 

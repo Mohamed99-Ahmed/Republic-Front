@@ -47,6 +47,8 @@ export default function AuthContext({ children }: { children: ReactNode }) {
     setToken("");
     router.push("/login");
   }
+  
+  
    // signUp function
    async function signUp(bodyData:submitType) {
     const loadingToast = toast.loading("جاري انشاء حساب");

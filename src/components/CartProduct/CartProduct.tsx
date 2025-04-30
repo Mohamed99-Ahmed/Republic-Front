@@ -20,18 +20,40 @@ export default function CartProduct({ productCart }: props) {
   const [choice, setChoice] = useState<string>(productCart.choice);
   //   function
   useEffect(() => {
-    addProductToCart({
-      productId: productCart.product._id,
-      size,
-      choice,
-      quantity,
-    });
-  }, [size, choice]);
-  function handleMinus() {
-    if (quantity > 1) {
+     // if product have 2 prices
+     if(typeof productCart.product.price === "object"){
       addProductToCart({
         productId: productCart.product._id,
         size,
+        choice,
+        quantity,
+      });
+      return;
+     }else{
+      addProductToCart({
+        productId: productCart.product._id,
+        size,
+        choice,
+        quantity,
+      });
+     }
+
+  }, [size, choice]);
+  function handleMinus() {
+    if (quantity > 1) {
+      // if product have 2 prices
+      if(typeof productCart.product.price === "object"){
+        addProductToCart({
+          productId: productCart.product._id,
+          size,
+          choice,
+          quantity: quantity - 1,
+        });
+        setQuantity(quantity - 1);
+        return 
+      }
+      addProductToCart({
+        productId: productCart.product._id,
         choice,
         quantity: quantity - 1,
       });
@@ -84,12 +106,23 @@ export default function CartProduct({ productCart }: props) {
             onSubmit={(e) => e.preventDefault()}
           >
             {/* size and choice */}
-            <SizeAndCoice
-              setSize={setSize}
-              size={size}
-              choice={choice}
-              setChoice={setChoice}
-            />
+              
+                {typeof productCart.product.price === "object" ? (
+                            <SizeAndCoice
+                              setSize={setSize}
+                              setChoice={setChoice}
+                              size={size}
+                              choice={choice}
+                            />
+                          ) : (
+                            <SizeAndCoice
+                            oneSize={true}
+                              setSize={setSize}
+                              setChoice={setChoice}
+                              size={size}
+                              choice={choice}
+                            />
+                          )}
 
             <div className="space-y-4">
               <div className="flex self-stretch rounded-md border border-gray-300 overflow-hidden">
@@ -108,9 +141,18 @@ export default function CartProduct({ productCart }: props) {
                   aria-label="increament  "
                   className="bg-sColor text-whitep-2 px-4 py-2 "
                   onClick={() => {
+                    if (typeof productCart.product.price === "object") {
+                      addProductToCart({
+                        productId: productCart.product._id,
+                        size,
+                        choice,
+                        quantity: quantity + 1,
+                      });
+                      setQuantity(quantity + 1);
+                      return;
+                    }
                     addProductToCart({
                       productId: productCart.product._id,
-                      size,
                       choice,
                       quantity: quantity + 1,
                     });

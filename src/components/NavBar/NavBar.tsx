@@ -18,7 +18,7 @@ export default function NavBar() {
   const path = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
-  const { token, logOut, logIn, payload } = useContext(authContext);
+  const { token, logOut,  payload } = useContext(authContext);
   console.log("payload", payload);
   // in updatin phase of component
 
@@ -30,7 +30,9 @@ export default function NavBar() {
     if (token) {
       logOut();
     }
-    logIn();
+  else{
+      router.push("/login");
+  }
   }
 
   return (

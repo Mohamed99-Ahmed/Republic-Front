@@ -34,12 +34,19 @@ export default function ProductItem({ product }: propsType) {
     }
     if (newQuantity && product) {
       setQuantity(newQuantity);
-      addProductToCart({
+      if (typeof product.price === "object") {
+        addProductToCart({
+          productId: product._id,
+          size,
+          choice,
+          quantity: newQuantity,
+        });
+        return;
+      }else{addProductToCart({
         productId: product._id,
-        size,
         choice,
         quantity: newQuantity,
-      });
+      });}
     }
   }
   const handleImageCover = function () {
@@ -147,11 +154,20 @@ export default function ProductItem({ product }: propsType) {
                 } `}
                 onClick={() => {
                   if (token) {
-                    if (size && choice) {
-                      handleAddToCart("incr");
-                    } else {
-                      toast.error("من فضلك اختار الحجم و الاختيار");
+                    if(typeof product.price === "object"){
+                      if (size && choice) {
+                        handleAddToCart("incr");
+                      } else {
+                        toast.error("من فضلك اختار الحجم و الاختيار");
+                      }
+                    }else{
+                      if (choice) {
+                        handleAddToCart("incr");
+                      } else {
+                        toast.error("من فضلك اختار الحجم ");
+                      }
                     }
+                 
                   } else {
                     router.push("/login");
                   }
