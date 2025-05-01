@@ -93,7 +93,7 @@ export default function ControleProduct({ product, category }: propsType) {
               height={100}
               width={100}
               alt="Preview"
-              className="w-full object-cover h-[300px]"
+              className="w-full object-cover h-[300px] "
             />
           )}
           <div className=" layer  absolute top-0 left-0 w-full h-full bg-black opacity-0 group-hover/parent:opacity-50 flex items-center justify-center transition-all duration-300 ease-in-out">
@@ -222,7 +222,7 @@ export default function ControleProduct({ product, category }: propsType) {
           value={formik.values.description}
           onBlur={formik.handleBlur}
           onChange={formik.handleChange}
-          className=" p-1 bg-white  focus:outline-sColor rounded-md grow text-wrap min-h-24 overflow-hidden "
+          className=" p-1 bg-white w-full max-w-[120px] input-change   focus:outline-sColor rounded-md grow text-wrap min-h-24 overflow-hidden "
         />
       </p>
       {/* buttons */}

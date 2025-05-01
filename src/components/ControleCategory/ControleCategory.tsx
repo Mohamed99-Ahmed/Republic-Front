@@ -21,8 +21,8 @@ export default function ControleCategory({
   const { updateCategory, removeCategory } = useContext(CateogryContext);
   const [isUpdate, setIsUpdate] = useState<boolean>(true);
   const [appearNew, setAppearNew] = useState<boolean>(false);
-// when change in category close the add new product
-    useEffect(() => {
+  // when change in category close the add new product
+  useEffect(() => {
     setAppearNew(false);
   }, [category]);
   const validationSchema = yup.object({
@@ -76,7 +76,7 @@ export default function ControleCategory({
           </p>
         )}
         {/* create new product */}
-        <div className="flex gap-4 border-sColor border p-2 ">
+        <div className="flex gap-4 flex-col border-sColor border p-2 ">
           <AddSquare
             className="w-12 h-12"
             onClick={() => setAppearNew(!appearNew)}
@@ -89,9 +89,15 @@ export default function ControleCategory({
         {/* prducts */}
         <div className="grid gap-4  md:grid-cols-2 ">
           {category &&
-            category.products?.map((product: productType) => (
-              <ControleProduct product={product} category={category} key={product._id} />
-            )).reverse()}
+            category.products
+              ?.map((product: productType) => (
+                <ControleProduct
+                  product={product}
+                  category={category}
+                  key={product._id}
+                />
+              ))
+              .reverse()}
         </div>
       </div>
     </>
