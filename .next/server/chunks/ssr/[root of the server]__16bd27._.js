@@ -503,13 +503,13 @@ async function Meals() {
                 category: category
             }, category.id, false, {
                 fileName: "[project]/src/components/Meals/Meals.tsx",
-                lineNumber: 32,
+                lineNumber: 33,
                 columnNumber: 16
             }, this);
         })
     }, void 0, false, {
         fileName: "[project]/src/components/Meals/Meals.tsx",
-        lineNumber: 30,
+        lineNumber: 31,
         columnNumber: 5
     }, this);
 }

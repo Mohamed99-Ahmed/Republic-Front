@@ -1,0 +1,1 @@
+(function(){var t=_ge("b-scopeListItem-copilotsearch"),n;t&&sj_be(t,"click",function(){typeof Log!="undefined"&&Log.LogFilterFlare&&Log.LogFilterFlare(["cpltsrchscope"])});n=_ge("b-scopeListItem-menu");n&&sj_be(n,"click",function(){typeof Log!="undefined"&&Log.LogFilterFlare&&Log.LogFilterFlare(["cpsmore"])})})()
