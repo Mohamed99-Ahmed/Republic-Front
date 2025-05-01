@@ -19,26 +19,6 @@ export default function CartProduct({ productCart }: props) {
   const [size, setSize] = useState<string>(productCart.size);
   const [choice, setChoice] = useState<string>(productCart.choice);
   //   function
-  useEffect(() => {
-     // if product have 2 prices
-     if(typeof productCart.product.price === "object"){
-      addProductToCart({
-        productId: productCart.product._id,
-        size,
-        choice,
-        quantity,
-      });
-      return;
-     }else{
-      addProductToCart({
-        productId: productCart.product._id,
-        size,
-        choice,
-        quantity,
-      });
-     }
-
-  }, [size, choice]);
   function handleMinus() {
     if (quantity > 1) {
       // if product have 2 prices

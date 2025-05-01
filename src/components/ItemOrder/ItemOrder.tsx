@@ -7,7 +7,6 @@ type propsType = {
 };
 
 export default function ItemOrder({ item }: propsType) {
-  console.log("item",item);
   // handleIamgeCover of product
   const handleImageCover = function () {
     if (item.product && item.product.imageCover) {
@@ -18,7 +17,6 @@ export default function ItemOrder({ item }: propsType) {
       return relativeIMg.src;
     }
   };
-  console.log(item);
   return ( item.product &&
     <figure className="flex overflow-hidden  relative cursor-pointer group flex-col items-center justify-between  gap-2 p-2 border-gray-500 border-2 border-solid rounded-md">
       <div className="overflow-hidden self-stretch">

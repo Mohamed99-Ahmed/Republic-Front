@@ -47,7 +47,6 @@ export default function ControleProduct({ product, category }: propsType) {
             // if the user add new product and he upload image cover
             const formData = new FormData();
             formData.append("imageCover", imageCover);
-            console.log("formData", formData);
             updateProduct(product._id, newdProduct, formData);
           } else {
             updateProduct(product._id, newdProduct);

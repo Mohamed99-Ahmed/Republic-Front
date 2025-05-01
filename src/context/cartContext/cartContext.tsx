@@ -5,8 +5,12 @@ import { CartType } from "@/types/responseTypes";
 import axios from "axios";
 import toast from "react-hot-toast";
 type AddProduct = {
-  size?:string, productId:string, quantity:number, description? : string,choice:string
-}
+  size?: string;
+  productId: string;
+  quantity: number;
+  description?: string;
+  choice: string;
+};
 interface CartContextType {
   addProductToCart: (arg: AddProduct) => Promise<void>;
   getMyCart: () => Promise<void>;
@@ -48,8 +52,13 @@ export default function CartContext({ children }: { children: ReactNode }) {
         setCarts(data.data.data);
       }
     } catch (err) {
-      console.log(err);
-      
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // get myCart function
@@ -67,11 +76,17 @@ export default function CartContext({ children }: { children: ReactNode }) {
         setMyCart(data.data.data);
       }
     } catch (err) {
-      console.log(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // add product to cart function
-  async function addProductToCart(bodyData:AddProduct) {
+  async function addProductToCart(bodyData: AddProduct) {
     try {
       const options = {
         url: `https://backend-three-nu-89.vercel.app/cart`,
@@ -79,8 +94,7 @@ export default function CartContext({ children }: { children: ReactNode }) {
         headers: {
           Authorization: `Bearer ${token}`,
         },
-        data:bodyData,
-        
+        data: bodyData,
       };
       const { data } = await axios.request(options);
       if (data.status === "success") {
@@ -88,8 +102,13 @@ export default function CartContext({ children }: { children: ReactNode }) {
         getMyCart();
       }
     } catch (err) {
-      console.log(err);
-      toast.error(err.response.data.message);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // remove product from cart function
@@ -110,8 +129,15 @@ export default function CartContext({ children }: { children: ReactNode }) {
         getMyCart();
       }
     } catch (err) {
-      console.log(err);
+   
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // clear product function
@@ -132,8 +158,14 @@ export default function CartContext({ children }: { children: ReactNode }) {
         getMyCart();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 

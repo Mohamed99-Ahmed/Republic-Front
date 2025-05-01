@@ -1,6 +1,6 @@
 "use client";
 import CartProduct from "@/components/CartProduct/CartProduct";
-import { CartContex } from "@/context/cartContext/cartContext";
+import CartContext, { CartContex } from "@/context/cartContext/cartContext";
 import { orderContext } from "@/context/OrderContext/orderContext";
 import Link from "next/link";
 import { useContext, useEffect, useState } from "react";
@@ -11,7 +11,6 @@ export default function Cart() {
   const { getCheckOut, createOrderCash } = useContext(orderContext);
   const [isPaid, setIsPaid] = useState<boolean>(false);
   const [typePayment, setTypePayment] = useState<string>("");
-  console.log("mycart", mycart);
   useEffect(() => {
     getMyCart();
   }, []);

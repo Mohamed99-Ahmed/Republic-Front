@@ -9,7 +9,6 @@ export default function Layout({
   children: React.ReactNode;
 }>) {
   const {payload} = useContext(authContext);
-  console.log(payload);
   return (
   <main className="relative min-h-screen">
       {  payload?.role === "admin" &&

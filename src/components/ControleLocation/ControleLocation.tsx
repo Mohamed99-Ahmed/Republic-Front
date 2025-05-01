@@ -35,13 +35,11 @@ export default function ContoleLocation({ store }: typePorps) {
     onSubmit: () => {
       if (store) {
         if (isChanged) {
-          console.log("update store", store._id);
           updateStore(store._id, formik.values);
         } else {
           deleteStore(store._id);
         }
       } else {
-        console.log("create store", formik.values);
         createStore(formik.values);
       }
     },
@@ -127,7 +125,6 @@ export default function ContoleLocation({ store }: typePorps) {
             <Button
               text="اضافة"
               type="submit"
-              onClick={() => console.log("ajsdllfdas")}
               ariaLabel="اضافة"
             ></Button>
           )}

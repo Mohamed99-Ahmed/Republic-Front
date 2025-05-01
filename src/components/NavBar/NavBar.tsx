@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import { useContext, useState } from "react";
+import { use, useContext, useState } from "react";
 import { HiMiniBars3BottomLeft } from "react-icons/hi2";
 import { CiLogout } from "react-icons/ci";
 import { Kufam } from "next/font/google";
@@ -8,6 +8,7 @@ import { usePathname, useRouter } from "next/navigation";
 import { FaCartShopping } from "react-icons/fa6";
 import { authContext } from "@/context/AuthContext/AuthContext";
 import { CiLogin } from "react-icons/ci";
+import { CartContex } from "@/context/cartContext/cartContext";
 
 const kufam = Kufam({
   subsets: ["arabic"],
@@ -18,8 +19,13 @@ export default function NavBar() {
   const path = usePathname();
   const router = useRouter();
   const [isOpen, setIsOpen] = useState(true);
-  const { token, logOut,  payload } = useContext(authContext);
-  console.log("payload", payload);
+  const { token, logOut, payload } = useContext(authContext);
+  const { mycart,getMyCart } = useContext(CartContex);
+
+  // get my cart when the component mount
+  useState(() => {getMyCart()}, []);
+  // in any change in mycart rerender the component
+  useState(() => {}, [mycart]); 
   // in updatin phase of component
 
   function toggleNav() {
@@ -29,10 +35,9 @@ export default function NavBar() {
   function handleLog() {
     if (token) {
       logOut();
-    }
-  else{
+    } else {
       router.push("/login");
-  }
+    }
   }
 
   return (
@@ -49,16 +54,19 @@ export default function NavBar() {
           </Link>
           {/* toggle nav */}
           <div className=" m-0 flex-grow md:flex-grow-0  justify-end inline-flex gap-2 self-end sm:self-auto md:order-2 space-x-3 md:space-x-0 rtl:space-x-reverse">
-            {/* wisthlist   */}
+            {/* cartshopping toogle   */}
             {token && (
-              <>
+              <p className="relative">
                 <FaCartShopping
                   className="text-2xl cursor-pointer"
                   onClick={() => {
                     router.push("/cart");
                   }}
                 />
-              </>
+                <span className="absolute text-white text-[0.8rem] flex  items-end justify-center w-6 h-6 text-center -translate-y-1/2 -translate-x-1/2 top-0 left-0 bg-sColor rounded-full">
+                  {mycart?.items.length || 0}
+                </span>
+              </p>
             )}
             {/* handle log */}
             <a className=" flex gap-3 items-center cursor-pointer">

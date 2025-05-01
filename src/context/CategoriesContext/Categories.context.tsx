@@ -48,7 +48,14 @@ export default function CateogryContextSupply({
       const { data } = await axios.get("https://backend-three-nu-89.vercel.app/categories");
       setCategories(data.data.data);
     } catch (err) {
-      console.log(err);
+
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 
@@ -68,8 +75,15 @@ export default function CateogryContextSupply({
         getAllCategories();
       }
     } catch (err) {
-      console.log(err);
+
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 
@@ -88,10 +102,16 @@ export default function CateogryContextSupply({
         toast.success("تم تعديل الفئة بنجاح");
         getAllCategories();
       }
-    } catch (err: any) {
-      console.log(err);
+    } catch (err) {
+   
       toast.dismiss(loadingToast);
-      toast.error(err?.response?.data?.message || "حدث خطأ");
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 
@@ -110,8 +130,14 @@ export default function CateogryContextSupply({
         getAllCategories();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 
@@ -154,8 +180,14 @@ export default function CateogryContextSupply({
         getAllCategories();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 
@@ -174,8 +206,14 @@ export default function CateogryContextSupply({
         getAllCategories();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 
@@ -197,8 +235,14 @@ export default function CateogryContextSupply({
         getAllCategories();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 

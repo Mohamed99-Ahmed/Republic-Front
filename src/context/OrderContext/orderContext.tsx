@@ -56,7 +56,13 @@ export default function OrderContextSupply({
         setUserOrders(data.data.data);
       }
     } catch (err) {
-      console.log(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // get Checkout function
@@ -70,13 +76,18 @@ export default function OrderContextSupply({
         },
       };
       const session = await axios.request(options);
-      console.log(session);
       const stripe = await stripePromise;
       await stripe?.redirectToCheckout({
         sessionId: session.data.session.id,
       });
     } catch (err) {
-      toast.error(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // get All orders function
@@ -94,7 +105,13 @@ export default function OrderContextSupply({
         setOrders(data.data.data);
       }
     } catch (err) {
-      console.log(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // delete order function
@@ -115,14 +132,19 @@ export default function OrderContextSupply({
         getAllOrders();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // create order if he paid cash
   async function createOrderCash(bodyData: { cartId: string; userId: string }) {
     const loadingToast = toast.loading("جاري انشاء اوردر");
-    console.log(bodyData);
     try {
       const options = {
         url: `https://backend-three-nu-89.vercel.app/order`,
@@ -135,7 +157,6 @@ export default function OrderContextSupply({
           user: bodyData.userId,
         },
       };
-      console.log(bodyData);
       const { data } = await axios.request(options);
       if (data.status === "success") {
         toast.dismiss(loadingToast);
@@ -144,9 +165,14 @@ export default function OrderContextSupply({
         getMyOrders();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
-      // toast.error(err.message || "An error occurred");
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   return (

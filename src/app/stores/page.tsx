@@ -3,6 +3,7 @@ import React from "react";
 import type { storesType } from "../../types/store.type";
 import Location from "@/components/Location/location";
 import axios from "axios";
+import toast from "react-hot-toast";
 
 //   {
 //     id: 1,
@@ -66,7 +67,13 @@ export default async function Stores() {
       const { data } = await axios.request(options);
       return data.data.data;
     } catch (err) {
-      console.log(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   const stores: storesType = await getAllStores();

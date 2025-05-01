@@ -8,11 +8,9 @@ export default function ContrleUsers() {
   const { getAllUsers,users } = useContext(userContext); // getCheckout on stripe
   useEffect(()=>{
     getAllUsers()
-    console.log("getAllUsers",users)
   },[])
   // if change in users rerender component
   useEffect(() => {
-    console.log(users)
   },[users])
   
   return (

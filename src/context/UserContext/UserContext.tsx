@@ -40,7 +40,13 @@ export default function UserContextSupply({
         setUsers(data.data.data);
       }
     } catch (err) {
-      console.log(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // delete specefic user function
@@ -61,8 +67,14 @@ export default function UserContextSupply({
         getAllUsers();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   //   udpate Me
@@ -83,8 +95,14 @@ export default function UserContextSupply({
         toast.success("تم تحديث بياناتك بنجاح");
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 

@@ -19,7 +19,7 @@ export default function ControleUser({ user }: propsType) {
       }
     }
   const { deleteUser } = useContext(userContext);
-  console.log(user);
+
   return (
     <figure className="flex relative flex-wrap overflow-hidden text-ellipsis  md:items-center gap-2 p-4  bg-white rounded-md hover:border hover:border-sColor">
       <Image

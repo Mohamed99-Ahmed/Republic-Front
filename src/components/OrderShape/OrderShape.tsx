@@ -12,7 +12,6 @@ type propsType = {
 
 export default function OrderShape({ order, myOrder }: propsType) {
   const { deleteOrder } = useContext(orderContext);
-  console.log(order);
 
   return (
     <>

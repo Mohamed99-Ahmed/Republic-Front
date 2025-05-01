@@ -52,7 +52,6 @@ export default function AuthContext({ children }: { children: ReactNode }) {
    // signUp function
    async function signUp(bodyData:submitType) {
     const loadingToast = toast.loading("جاري انشاء حساب");
-    console.log(bodyData);
     try {
       const options = {
         url: `https://backend-three-nu-89.vercel.app/users/signup`,
@@ -69,8 +68,14 @@ export default function AuthContext({ children }: { children: ReactNode }) {
         router.push("./login");
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // logikn function
@@ -93,9 +98,14 @@ export default function AuthContext({ children }: { children: ReactNode }) {
         router.push("./");
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
-      toast.error(err.response.data.message);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // forgetPassword function
@@ -119,9 +129,14 @@ export default function AuthContext({ children }: { children: ReactNode }) {
         router.push("./resetPassword");
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
-      toast.error(err.response.data.message);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // resetPassword function
@@ -144,9 +159,15 @@ export default function AuthContext({ children }: { children: ReactNode }) {
         router.push("./login");
       }
     } catch (err) {
-      console.log(err);
+
       toast.dismiss(loadingToast);
-      toast.error(err.response.data.message);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 

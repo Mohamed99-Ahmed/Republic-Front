@@ -2,6 +2,7 @@ import React from "react";
 import CategoryMeal from "../CategoryMeal/CategoryMeal";
 import axios from "axios";
 import categoryType from "../../types/category.type";
+import toast from "react-hot-toast";
 // import burgerVid from "../../../public/vidios/burgerVid.mp4";
 
 export default async function Meals() {
@@ -14,7 +15,13 @@ export default async function Meals() {
       const { data } = await axios.request(options);
       return data.data.data;
     } catch (err) {
-      console.log(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   const categories = await getAllCategories();

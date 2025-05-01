@@ -42,7 +42,13 @@ export default function StoresContextSupply({
         setStores(data.data.data);
       }
     } catch (err) {
-      console.log(err);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // delete specefic store function
@@ -63,8 +69,14 @@ export default function StoresContextSupply({
         getAllStores();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   //   udpate Me
@@ -79,15 +91,20 @@ export default function StoresContextSupply({
         },
         data: bodyData,
       };
-      console.log("bodyData", bodyData);
       const { data } = await axios.request(options);
       if (data.status === "success") {
         toast.dismiss(loadingToast);
         toast.success("تم تحديث بيانات المتجر بنجاح");
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
   // create new store function
@@ -103,7 +120,6 @@ async function createStore(bodyData: storeType) {
         },
         data: bodyData
       };
-      console.log("bodyData", bodyData);
       const { data } = await axios.request(options);
       if (data.status === "success") {
         toast.dismiss(loadingToast);
@@ -112,8 +128,14 @@ async function createStore(bodyData: storeType) {
         getAllStores();
       }
     } catch (err) {
-      console.log(err);
       toast.dismiss(loadingToast);
+      let errorMessage = "حدث خطأ غير متوقع";
+
+      if (axios.isAxiosError(err) && err.response?.data?.message) {
+        errorMessage = err.response.data.message;
+      }
+
+      toast.error(errorMessage);
     }
   }
 
