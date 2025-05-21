@@ -41,7 +41,7 @@ export default function CartContext({ children }: { children: ReactNode }) {
   async function getAllCarts() {
     try {
       const options = {
-        url: "https://backend-three-nu-89.vercel.app/cart/allCarts",
+        url: "https://republic-backend.vercel.app/cart/allCarts",
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -65,7 +65,7 @@ export default function CartContext({ children }: { children: ReactNode }) {
   async function getMyCart() {
     try {
       const options = {
-        url: "https://backend-three-nu-89.vercel.app/cart",
+        url: "https://republic-backend.vercel.app/cart",
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -89,7 +89,7 @@ export default function CartContext({ children }: { children: ReactNode }) {
   async function addProductToCart(bodyData: AddProduct) {
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/cart`,
+        url: `https://republic-backend.vercel.app/cart`,
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -116,7 +116,7 @@ export default function CartContext({ children }: { children: ReactNode }) {
     const loadingToast = toast.loading("جاري ازالة المنتج من عربة التسوق");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/cart/${productId}`,
+        url: `https://republic-backend.vercel.app/cart/${productId}`,
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -145,7 +145,7 @@ export default function CartContext({ children }: { children: ReactNode }) {
     const loadingToast = toast.loading("جاري ازالة جميع المنتجات من العربة");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/cart`,
+        url: `https://republic-backend.vercel.app/cart`,
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,

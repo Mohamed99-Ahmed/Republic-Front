@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   // "https://ik.imagekit.io/MohamedAhmed/Rubublic%20Imgs/offers/elngdaa.png?updatedAt=1740589460139"
-  // "(https://backend-three-nu-89.vercel.app/public/imgs/products/product-67ce1e1eee3b8e988912e4bd-1745422240572.jpeg"
+  // "(https://republic-backend.vercel.app/public/imgs/products/product-67ce1e1eee3b8e988912e4bd-1745422240572.jpeg"
   // https://ik.imagekit.io/MohamedAhmed/RebublicImgs/uploads
   // /* config options here */
   // igonre errors during build
@@ -21,7 +21,7 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: "https",
-        hostname: "backend-three-nu-89.vercel.app",
+        hostname: "republic-backend.vercel.app ",
         pathname: "/public/imgs/**", // Use `pathname` instead of `path`
       },
       {

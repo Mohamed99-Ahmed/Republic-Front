@@ -55,6 +55,7 @@ export default function Cart() {
                     onClick={() => clearCart()}
                     className="clear mt-4 text-center cursor-pointer"
                   >
+                 
                     <span className="btn text-sColor text-xl underline">
                       ازالة الكل
                     </span>

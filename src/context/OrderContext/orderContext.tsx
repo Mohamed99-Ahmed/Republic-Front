@@ -45,7 +45,7 @@ export default function OrderContextSupply({
   async function getMyOrders() {
     try {
       const options = {
-        url: "https://backend-three-nu-89.vercel.app/order/myOrders",
+        url: "https://republic-backend.vercel.app/order/myOrders",
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -69,7 +69,7 @@ export default function OrderContextSupply({
   async function getCheckOut(cartId: string) {
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/order/checkout-session/${cartId}`,
+        url: `https://republic-backend.vercel.app/order/checkout-session/${cartId}`,
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -94,7 +94,7 @@ export default function OrderContextSupply({
   async function getAllOrders() {
     try {
       const options = {
-        url: "https://backend-three-nu-89.vercel.app/order/allOrders",
+        url: "https://republic-backend.vercel.app/order/allOrders",
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -119,7 +119,7 @@ export default function OrderContextSupply({
     const loadingToast = toast.loading("جاري حذف الطلب");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/order/${orderId}`,
+        url: `https://republic-backend.vercel.app/order/${orderId}`,
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -147,7 +147,7 @@ export default function OrderContextSupply({
     const loadingToast = toast.loading("جاري انشاء اوردر");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/order`,
+        url: `https://republic-backend.vercel.app/order`,
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -31,7 +31,7 @@ export default function StoresContextSupply({
   async function getAllStores() {
     try {
       const options = {
-        url: "https://backend-three-nu-89.vercel.app/stores",
+        url: "https://republic-backend.vercel.app/stores",
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -56,7 +56,7 @@ export default function StoresContextSupply({
     const loadingToast = toast.loading("جاري حذف المتجر");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/stores/${storeId}`,
+        url: `https://republic-backend.vercel.app/stores/${storeId}`,
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -84,7 +84,7 @@ export default function StoresContextSupply({
     const loadingToast = toast.loading("جاري تحديث البيانات");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/stores/${storeId}`,
+        url: `https://republic-backend.vercel.app/stores/${storeId}`,
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -113,7 +113,7 @@ async function createStore(bodyData: storeType) {
     const loadingToast = toast.loading("جاري انشاء المتجر");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/stores`,
+        url: `https://republic-backend.vercel.app/stores`,
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,

@@ -29,7 +29,7 @@ export default function UserContextSupply({
   async function getAllUsers() {
     try {
       const options = {
-        url: "https://backend-three-nu-89.vercel.app/users",
+        url: "https://republic-backend.vercel.app/users",
         method: "GET",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -54,7 +54,7 @@ export default function UserContextSupply({
     const loadingToast = toast.loading("جاري حذف المستخدم");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/users/${userId}`,
+        url: `https://republic-backend.vercel.app/users/${userId}`,
         method: "DELETE",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -82,7 +82,7 @@ export default function UserContextSupply({
     const loadingToast = toast.loading("جاري تحديث بياناتك");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/users/updateMe`,
+        url: `https://republic-backend.vercel.app/users/updateMe`,
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

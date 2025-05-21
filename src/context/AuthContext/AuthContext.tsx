@@ -54,7 +54,7 @@ export default function AuthContext({ children }: { children: ReactNode }) {
     const loadingToast = toast.loading("جاري انشاء حساب");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/users/signup`,
+        url: `https://republic-backend.vercel.app/users/signup`,
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -68,14 +68,8 @@ export default function AuthContext({ children }: { children: ReactNode }) {
         router.push("./login");
       }
     } catch (err) {
-      toast.dismiss(loadingToast);
-      let errorMessage = "حدث خطأ غير متوقع";
 
-      if (axios.isAxiosError(err) && err.response?.data?.message) {
-        errorMessage = err.response.data.message;
-      }
-
-      toast.error(errorMessage);
+      toast.error(err?.response?.data?.message);
     }
   }
   // logikn function
@@ -83,7 +77,7 @@ export default function AuthContext({ children }: { children: ReactNode }) {
     const loadingToast = toast.loading("جاري تسجيل الدخول");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/users/login`,
+        url: `https://republic-backend.vercel.app/users/login`,
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -114,7 +108,7 @@ export default function AuthContext({ children }: { children: ReactNode }) {
     const loadingToast = toast.loading("جاري تحميل بيناتك");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/users/forgetPassword`,
+        url: `https://republic-backend.vercel.app/users/forgetPassword`,
         method: "POST",
         headers: {
           Authorization: `Bearer ${token}`,
@@ -144,7 +138,7 @@ export default function AuthContext({ children }: { children: ReactNode }) {
     const loadingToast = toast.loading("جاري اعادة تغيير كلمة المرور");
     try {
       const options = {
-        url: `https://backend-three-nu-89.vercel.app/users/resetPassword/${bodyData.token}`,
+        url: `https://republic-backend.vercel.app/users/resetPassword/${bodyData.token}`,
         method: "PATCH",
         headers: {
           Authorization: `Bearer ${token}`,

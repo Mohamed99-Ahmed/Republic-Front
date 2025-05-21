@@ -44,26 +44,17 @@ export default function CateogryContextSupply({
   const [categories, setCategories] = useState<categoryType[] | null>(null);
 
   async function getAllCategories() {
-    try {
-      const { data } = await axios.get("https://backend-three-nu-89.vercel.app/categories");
+    
+      const { data } = await axios.get("https://republic-backend.vercel.app/categories");
       setCategories(data.data.data);
-    } catch (err) {
-
-      let errorMessage = "حدث خطأ غير متوقع";
-
-      if (axios.isAxiosError(err) && err.response?.data?.message) {
-        errorMessage = err.response.data.message;
-      }
-
-      toast.error(errorMessage);
-    }
+    
   }
 
   async function createCategory(categoryName: string) {
     const loadingToast = toast.loading("جاري انشاء الفئة");
     try {
       const { data } = await axios.post(
-        "https://backend-three-nu-89.vercel.app/categories",
+        "https://republic-backend.vercel.app/categories",
         { categoryName },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -91,7 +82,7 @@ export default function CateogryContextSupply({
     const loadingToast = toast.loading("جاري تعديل الفئة");
     try {
       const { data } = await axios.patch(
-        `https://backend-three-nu-89.vercel.app/categories/${id}`,
+        `https://republic-backend.vercel.app/categories/${id}`,
         { categoryName },
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -119,7 +110,7 @@ export default function CateogryContextSupply({
     const loadingToast = toast.loading("جاري مسح الفئة");
     try {
       const { data } = await axios.delete(
-        `https://backend-three-nu-89.vercel.app/categories/${id}`,
+        `https://republic-backend.vercel.app/categories/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -167,7 +158,7 @@ export default function CateogryContextSupply({
     const loadingToast = toast.loading("جاري انشاء المنتج");
     try {
       const options = {
-        url : "https://backend-three-nu-89.vercel.app/products",
+        url : "https://republic-backend.vercel.app/products",
         method: "POST",
         headers: {  Authorization: `Bearer ${token}` },
         data: bodyData,
@@ -195,7 +186,7 @@ export default function CateogryContextSupply({
     const loadingToast = toast.loading("جاري حذف المنتج");
     try {
       const { data } = await axios.delete(
-        `https://backend-three-nu-89.vercel.app/products/${id}`,
+        `https://republic-backend.vercel.app/products/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -222,7 +213,7 @@ export default function CateogryContextSupply({
     try {
       const dataToSend = formData ? handleImageUpload(bodyData, formData) : bodyData;
       const options = {
-        url : `https://backend-three-nu-89.vercel.app/products/${id}`,
+        url : `https://republic-backend.vercel.app/products/${id}`,
         method: "PATCH",
         headers: {  Authorization: `Bearer ${token}` },
         data: dataToSend,

@@ -17,12 +17,6 @@ const kufam = Kufam({
 export default function Login() {
   const {forgetPassword} = useContext(authContext);
   
-  //   run: false,
-  //   url: "https://backend-three-nu-89.vercel.app/users/forgetPassword",
-  //   method: "POST",
-  //   toastLoading: "جاري تحميل بيناتك",
-  //   toastSuccess: " تم ارسال كود الي الايميل",
-  // });
   const validationSchema = yup.object({
     email: yup
       .string()

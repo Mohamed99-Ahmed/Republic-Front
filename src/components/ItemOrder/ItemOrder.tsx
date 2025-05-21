@@ -12,7 +12,7 @@ export default function ItemOrder({ item }: propsType) {
     if (item.product && item.product.imageCover) {
       return item.product.imageCover.startsWith("http")
         ? item.product.imageCover
-        : `https://backend-three-nu-89.vercel.app/public/imgs/products/${item.product.imageCover}`;
+        : `https://republic-backend.vercel.app/public/imgs/products/${item.product.imageCover}`;
     } else {
       return relativeIMg.src;
     }

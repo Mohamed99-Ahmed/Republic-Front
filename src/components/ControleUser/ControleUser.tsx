@@ -13,7 +13,7 @@ export default function ControleUser({ user }: propsType) {
       if (user.photo) {
         return user.photo.startsWith("http")
           ? user.photo
-          : `https://backend-three-nu-89.vercel.app/public/imgs/users/${user.photo}`;
+          : `https://republic-backend.vercel.app/public/imgs/users/${user.photo}`;
       } else {
         return userDefault.src;
       }

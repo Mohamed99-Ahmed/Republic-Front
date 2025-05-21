@@ -173,7 +173,9 @@ __turbopack_esm__({
 });
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$next$2f$dist$2f$server$2f$route$2d$modules$2f$app$2d$page$2f$vendored$2f$rsc$2f$react$2d$jsx$2d$dev$2d$runtime$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-jsx-dev-runtime.js [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$src$2f$components$2f$Location$2f$location$2e$tsx__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/src/components/Location/location.tsx [app-rsc] (ecmascript)");
+var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/react-hot-toast/dist/index.mjs [app-rsc] (ecmascript)");
 var __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__ = __turbopack_import__("[project]/node_modules/axios/lib/axios.js [app-rsc] (ecmascript)");
+;
 ;
 ;
 ;
@@ -181,13 +183,17 @@ async function Stores() {
     async function getAllStores() {
         try {
             const options = {
-                url: "https://backend-three-nu-89.vercel.app/stores",
+                url: "https://republic-backend.vercel.app/stores",
                 method: "GET"
             };
             const { data } = await __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].request(options);
             return data.data.data;
         } catch (err) {
-            console.log(err);
+            let errorMessage = "حدث خطأ غير متوقع";
+            if (__TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$axios$2f$lib$2f$axios$2e$js__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].isAxiosError(err) && err.response?.data?.message) {
+                errorMessage = err.response.data.message;
+            }
+            __TURBOPACK__imported__module__$5b$project$5d2f$node_modules$2f$react$2d$hot$2d$toast$2f$dist$2f$index$2e$mjs__$5b$app$2d$rsc$5d$__$28$ecmascript$29$__["default"].error(errorMessage);
         }
     }
     const stores = await getAllStores();
@@ -200,18 +206,18 @@ async function Stores() {
                     store: store
                 }, store._id, false, {
                     fileName: "[project]/src/app/stores/page.tsx",
-                    lineNumber: 77,
+                    lineNumber: 84,
                     columnNumber: 18
                 }, this);
             })
         }, void 0, false, {
             fileName: "[project]/src/app/stores/page.tsx",
-            lineNumber: 75,
+            lineNumber: 82,
             columnNumber: 7
         }, this)
     }, void 0, false, {
         fileName: "[project]/src/app/stores/page.tsx",
-        lineNumber: 74,
+        lineNumber: 81,
         columnNumber: 5
     }, this);
 }

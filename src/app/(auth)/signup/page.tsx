@@ -19,12 +19,7 @@ const kufam = Kufam({
 
 export default function SignUp() {
   const {signUp} = useContext(authContext);
-  //   run: false,
-  //   url: "https://backend-three-nu-89.vercel.app/users/signup",
-  //   method: "POST",
-  //   toastLoading: "جاري انشاء الحساب",
-  //   toastSuccess: "مبروك تم انشاء حسابك",
-  // });
+
   // submit funciton
   async function submitFunc(values: submitType) {
 

@@ -66,7 +66,7 @@ export default function ControleProduct({ product, category }: propsType) {
     if (product?.imageCover) {
       return product.imageCover.startsWith("http")
         ? product.imageCover
-        : `https://backend-three-nu-89.vercel.app/public/imgs/products/${product.imageCover}`;
+        : `https://republic-backend.vercel.app/public/imgs/products/${product.imageCover}`;
     } else {
       return relativeImg;
     }

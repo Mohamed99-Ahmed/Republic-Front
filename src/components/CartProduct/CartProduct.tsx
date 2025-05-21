@@ -48,7 +48,7 @@ export default function CartProduct({ productCart }: props) {
     if (productCart.product.imageCover) {
       return productCart.product.imageCover.startsWith("http")
         ? productCart.product.imageCover
-        : `https://backend-three-nu-89.vercel.app/public/imgs/products/${productCart.product.imageCover}`;
+        : `https://republic-backend.vercel.app/public/imgs/products/${productCart.product.imageCover}`;
     } else {
       return testImg;
     }

@@ -61,7 +61,7 @@ export default async function Stores() {
   async function getAllStores() {
     try {
       const options = {
-        url: "https://backend-three-nu-89.vercel.app/stores",
+        url: "https://republic-backend.vercel.app/stores",
         method: "GET",
       };
       const { data } = await axios.request(options);
